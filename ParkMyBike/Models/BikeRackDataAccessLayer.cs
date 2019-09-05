@@ -17,7 +17,7 @@ namespace ParkMyBike.Models
             bikeRacksDb = _bikeRacksDb;
         }
 
-        public int AddBikeRack(BikeRack rack) //why int and not void? (sim question for update & delete)
+        public int AddBikeRack(BikeRack rack) 
         {
             try
             {

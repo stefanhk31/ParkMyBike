@@ -24,17 +24,15 @@ namespace ParkMyBike.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<BikeRack>()
-                .HasData(new BikeRack() {
-                    Id = 1,
-                    NumberOfRacks = 2,
-                    RackType = "Hitch",
-                    LocationDescription = "Kroger",
-                    Address = "2217 North Broadway, Knoxville, TN 37917",
-                    Status = Enums.RackStatus.Planned
-                });
-
+            modelBuilder.Entity<BikeRack>().HasData(new BikeRack()
+            {
+                Id = 1,
+                Address = "2225 Estelle Circle",
+                LocationDescription = "Will Skelton Greenway",
+                NumberOfRacks = 1,
+                RackType = "Hoop",
+                Status = "Installed"
+            });
         }
-
     }
 }

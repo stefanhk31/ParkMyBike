@@ -27,6 +27,8 @@ namespace ParkMyBike
                 cfg.UseSqlServer(_config.GetConnectionString("BikeRackConnectionString"));
             });
 
+            services.AddTransient<BikeRackSeeder>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // In production, the Angular files will be served from this directory
