@@ -6,7 +6,7 @@ using ParkMyBike.Data.Entities;
 
 namespace ParkMyBike.Data
 {
-    public interface IBikeRack
+    public interface IBikeRackDataAccessLayer
     {
         IEnumerable<BikeRack> GetBikeRacks();
         int AddBikeRack(BikeRack rack);

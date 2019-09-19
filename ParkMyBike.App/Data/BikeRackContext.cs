@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ParkMyBike.Data.Entities;
+using ParkMyBike.Enums;
 
 namespace ParkMyBike.Data
 {
@@ -19,20 +20,34 @@ namespace ParkMyBike.Data
         }
 
         public DbSet<BikeRack> BikeRacks { get; set; }
+        public DbSet<Coordinates> Coordinates { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<BikeRack>().HasData(new BikeRack()
+            Coordinates initialCoords = new Coordinates
             {
                 Id = 1,
-                Address = "2225 Estelle Circle",
-                LocationDescription = "Will Skelton Greenway",
+                Longitude = -83.9569119,
+                Latitude = 36.0140813
+            };
+
+            BikeRack initialBikeRack = new BikeRack
+            {
+                Id = 1,
+                CoordinatesId = 1,
                 NumberOfRacks = 1,
-                RackType = "Hoop",
-                Status = "Installed"
-            });
+                LocationDescription = "My Home",
+                Status = RackStatus.Installed,
+                RackType = RackType.Other
+            };
+
+            modelBuilder.Entity<Coordinates>()
+                .HasData(initialCoords);
+
+            modelBuilder.Entity<BikeRack>()
+                .HasData(initialBikeRack);
         }
     }
 }

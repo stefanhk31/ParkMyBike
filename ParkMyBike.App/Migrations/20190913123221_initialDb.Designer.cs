@@ -9,8 +9,8 @@ using ParkMyBike.Data;
 namespace ParkMyBike.Migrations
 {
     [DbContext(typeof(BikeRackContext))]
-    [Migration("20190822133122_SeedData")]
-    partial class SeedData
+    [Migration("20190913123221_initialDb")]
+    partial class initialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,19 +20,42 @@ namespace ParkMyBike.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("ParkMyBike.Data.Coordinates", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("Latitude");
+
+                    b.Property<double>("Longitude");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Coordinates");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Latitude = 36.014081300000001,
+                            Longitude = -83.956911899999994
+                        });
+                });
+
             modelBuilder.Entity("ParkMyBike.Data.Entities.BikeRack", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address");
+                    b.Property<int>("CoordinatesId");
 
                     b.Property<string>("LocationDescription");
 
                     b.Property<int>("NumberOfRacks");
 
-                    b.Property<string>("RackType");
+                    b.Property<int>("RackType");
 
                     b.Property<int>("Status");
 
@@ -44,11 +67,11 @@ namespace ParkMyBike.Migrations
                         new
                         {
                             Id = 1,
-                            Address = "2217 North Broadway, Knoxville, TN 37917",
-                            LocationDescription = "Kroger",
-                            NumberOfRacks = 2,
-                            RackType = "Hitch",
-                            Status = 2
+                            CoordinatesId = 1,
+                            LocationDescription = "My Home",
+                            NumberOfRacks = 1,
+                            RackType = 3,
+                            Status = 0
                         });
                 });
 #pragma warning restore 612, 618

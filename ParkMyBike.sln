@@ -1,25 +1,34 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29201.188
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkMyBike", "ParkMyBike\ParkMyBike.csproj", "{EFC022A4-515D-44ED-9A3A-4A6CE8DDD090}"
+# Visual Studio 15
+VisualStudioVersion = 15.0.26124.0
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkMyBike", "ParkMyBike.App\ParkMyBike.csproj", "{747263B0-46DD-4781-A2F1-558C52C7916D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EFC022A4-515D-44ED-9A3A-4A6CE8DDD090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EFC022A4-515D-44ED-9A3A-4A6CE8DDD090}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EFC022A4-515D-44ED-9A3A-4A6CE8DDD090}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EFC022A4-515D-44ED-9A3A-4A6CE8DDD090}.Release|Any CPU.Build.0 = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {18C0A3FF-3B35-4535-A20E-DC578AEF0CC3}
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{747263B0-46DD-4781-A2F1-558C52C7916D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{747263B0-46DD-4781-A2F1-558C52C7916D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{747263B0-46DD-4781-A2F1-558C52C7916D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{747263B0-46DD-4781-A2F1-558C52C7916D}.Debug|x64.Build.0 = Debug|Any CPU
+		{747263B0-46DD-4781-A2F1-558C52C7916D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{747263B0-46DD-4781-A2F1-558C52C7916D}.Debug|x86.Build.0 = Debug|Any CPU
+		{747263B0-46DD-4781-A2F1-558C52C7916D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{747263B0-46DD-4781-A2F1-558C52C7916D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{747263B0-46DD-4781-A2F1-558C52C7916D}.Release|x64.ActiveCfg = Release|Any CPU
+		{747263B0-46DD-4781-A2F1-558C52C7916D}.Release|x64.Build.0 = Release|Any CPU
+		{747263B0-46DD-4781-A2F1-558C52C7916D}.Release|x86.ActiveCfg = Release|Any CPU
+		{747263B0-46DD-4781-A2F1-558C52C7916D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

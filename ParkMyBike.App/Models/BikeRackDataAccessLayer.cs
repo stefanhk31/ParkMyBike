@@ -8,7 +8,7 @@ using ParkMyBike.Data.Entities;
 
 namespace ParkMyBike.Models
 {
-    public class BikeRackDataAccessLayer : IBikeRack
+    public class BikeRackDataAccessLayer : IBikeRackDataAccessLayer
     {
         private BikeRackContext bikeRacksDb;
 

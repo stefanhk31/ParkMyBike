@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace ParkMyBike.Enums
 {
-    public enum RackStatus
+    public enum RackType
     {
-        Installed,
-        ToBeReplaced,
-        Planned
+        Hoop=0,
+        Hitch=1,
+        Ulockit=2,
+        Other=3
     }
 }
