@@ -13,6 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="12.1.2" />
+    <PackageReference Include="EFCore.Seeder" Version="2.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.2.0" />
@@ -35,6 +37,11 @@
   <ItemGroup>
     <None Remove="ClientApp\old-angular.zip" />
     <None Remove="ClientApp\old-angular.zip" />
+    <None Remove="Data\BikeRacks.csv" />
+    <None Remove="Data\BikeRacksFiltered.csv" />
+    <None Remove="Data\BikeRacksFilteredWithCoordsField.csv" />
+    <None Remove="Data\BikeRacksModified.csv" />
+    <None Remove="Data\BikeRacksOriginal.csv" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
@@ -63,5 +70,7 @@
       </ResolvedFileToPublish>
     </ItemGroup>
   </Target>
+
+  <ProjectExtensions><VisualStudio><UserProperties config_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

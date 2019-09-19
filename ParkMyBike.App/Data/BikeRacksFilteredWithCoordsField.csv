@@ -1,0 +1,224 @@
+NumberOfRacks,RackType,LocationDescription,Coordinates,Status,Id
+1,Hoop,Will Skelton Greenway,,Installed,1
+1,Hoop,Ned McWheter Park,,Installed,2
+2,Hoop,Burlington Branch Library,,Installed,3
+3,Hitch,Cansler YMCA,,Installed,4
+3,Hitch,Cansler YMCA,,Installed,5
+3,Hoop,Farragut Presbyterian Church,,Installed,6
+2,Hitch,Farragut Town Hall,,Installed,7
+2,Hoop,Farragut Parks,,Installed,8
+2,Hoop,Anchor Park,,Installed,9
+1,Hoop,Turkey Creek Medical Center,,Installed,10
+1,Hoop,Olive Garden,,Installed,11
+2,Hoop,Travelers Call Center,,Installed,12
+4,Hoop,Parkwest Hospital,,Installed,13
+4,Hoop,TV Unitarian Church,,Installed,14
+2,Hoop,Caswell Park,,Installed,15
+1,Hoop,Caswell Park,,Installed,16
+1,Hoop,Panera,,Installed,17
+4,Hoop,Knox County Health Dept - North Entrance,,Installed,18
+1,Hoop,Knox County Health Dept - South (back) entrance off of Bernard Ave,,Installed,19
+1,Hoop,Bus Stop,,Installed,20
+1,Hoop,Tyson Park,,Installed,21
+1,Hoop,Tyson Park,,Installed,22
+2,Hitch,Sterchi Lofts,,Installed,23
+1,Hitch,Emporium,,Installed,24
+2,Hitch,Visitors Center/WDVX,,Installed,25
+1,Hitch,Downtown Wine & Spirits,,Installed,26
+1,Hitch,Harrogate's,,Installed,27
+1,Hitch,Regions - Miller Building,,Installed,28
+1,Hitch,Krutch Park - east end,,Installed,29
+1,Hitch,East Tennessee History Center,,Installed,30
+1,Hitch,One Centre Sq,,Installed,31
+1,Hitch,Former Regions / AmSouth Building,,Installed,32
+1,Hitch,S Krutch Park,,Installed,33
+1,Hitch,Urban Outfitters,,Installed,34
+23,Hitch,Market Square,,Installed,35
+1,Hitch,YMCA,,Installed,36
+2,Hitch,YWCA,,Installed,37
+4,Hitch,Lawson McGee Library,,Installed,38
+1,Hitch,Knoxville Convention Center (NE Entrance),,Installed,39
+2,Hitch,,,Installed,40
+3,Hitch,The Bistro/Bijou Theater,,Installed,41
+5,Hitch,City-County Main Street,,Installed,42
+4,Hitch,City-County Hill Street,,Installed,43
+1,Hitch,Post Office,,Installed,44
+1,Hitch,Medical Arts Building,,Installed,45
+1,Hitch,Medical Arts Building,,Installed,46
+1,Hitch,Tennessee Theatre,,Installed,47
+1,Hitch,Nama/Regal,,Installed,48
+3,Hoop,walkway to State St.,,Installed,49
+1,Hitch,Sapphire,,Installed,50
+1,Hitch,Phoenix building,,Installed,51
+2,Hitch,Maple Hall,,Installed,52
+2,Hitch,Mast General Store,,Installed,53
+1,Hitch,Andrew Johnson Building,,Installed,54
+3,Hoop,Farragut Middle School,,Installed,55
+1,Hoop,Victor Ashe Park,,Installed,56
+1,Hoop,Adair Park,,Installed,57
+2,Hoop,Tn Dept of Parole and Probation,,Installed,58
+1,Hitch,Time Warp Tea Room,,Installed,59
+1,Hitch,Taoist Tai Chi,,Installed,60
+3,Other,ONK Park,,Installed,61
+2,Hitch,Glowing Body,,Installed,62
+1,Hitch,Gypsy Hands Healing Arts,,Installed,63
+2,Hoop,CAC Building,,Installed,64
+3,Hoop,James Agee Park,,Installed,65
+139,Hoop,UT Campus,,Installed,66
+2,Hoop,Blessed John 23 Catholic Center,,Installed,67
+6,Hoop,University Gardens,,Installed,68
+3,Hoop,Mercedes Place,,Installed,69
+2,Hoop,Westwood Park,,Installed,70
+1,Hoop,Island Home Park,,Installed,71
+1,Hoop,Morningside Park,,Installed,72
+2,Hitch,Barley's,,Installed,73
+2,Hitch,Boyds Jig and Reel - On W Jackson Ave,,Installed,74
+2,Hitch,Jackson Alteliers,,Installed,75
+1,Hoop,Holston River Park,,Installed,76
+2,Hoop,St James Episcopal,,Installed,77
+6,Hoop,McFee Park,,Installed,78
+1,Hoop,Snap Fitness,,Installed,79
+1,Hoop,West Hills Community Park,,Installed,80
+2,Hoop,Lakeshore Park,,Installed,81
+1,,Crossroads Center,,Installed,82
+1,Hoop,Crossroads Center,,Installed,83
+1,Hoop,"Ingles, Crossroads Center",,Installed,84
+1,Hoop,St. Mary's Fitness,,Installed,85
+3,Hoop,Powell Branch LIbrary,,Installed,86
+1,Hoop,Subway,,Installed,87
+2,Hoop,Melton Lake Park,,Installed,88
+4,Hoop,Oak Ridge Civic Center,,Installed,89
+2,Other,Oak Ridge Public Library Plaza,,Installed,90
+2,Hoop,Jackson Square,,Installed,91
+2,Hoop,OHS Tennis Courts,,Installed,92
+2,Hoop,Elm Grove Park,,Installed,93
+2,Hoop,Highland View Park,,Installed,94
+2,Hoop,Milt Dickens Park,,Installed,95
+4,Hoop,Scarboro Park,,Installed,96
+2,Hoop,Oak Ridge Baseball Complex,,Installed,97
+2,Hoop,Briarcliff Park,,Installed,98
+1,Hoop,Vacant building adjacent to Sunspot,,Installed,99
+2,Hoop,Big Turtle Dog Park,,Installed,100
+4,Bike corral,,,Installed,101
+1,Hitch,Farragut building,,Installed,102
+1,Hitch,KUB - Miller Building,,Installed,103
+3,Hitch,500 Block Market,,Installed,104
+1,Hitch,Near Rowing Man Statue,,Installed,105
+3,Hoop,Sunsphere base,,Installed,106
+2,Hitch,World's Fair Park,,Installed,107
+1,Hitch,Studio Four Design Inc,,Installed,108
+2,Hitch,CTV,,Installed,109
+4,Hitch,Daylight Building,,Installed,110
+1,Hitch,Daylight Building (Walnut),,Installed,111
+6,Hoop,Outdoor Knoxville,,Installed,112
+3,Hitch,,,Installed,113
+3,Hitch,Knoxville Coliseum,,Installed,114
+3,Hoop,Knoxville Museum of Art,,Installed,115
+3,Hoop,L&N Stem Academy,,Installed,116
+6,Hoop,Old City Java,,Installed,117
+2,Hitch,West Jackson Workshops,,Installed,118
+2,Hoop,Knoxville Zoo,,Installed,119
+1,Hoop,Pepsi,,Installed,120
+1,Hoop,John T O'Connor Center,,Installed,121
+3,Hoop,Jacob Building,,Installed,122
+2,Hoop,Picnic Shelter near Beaman entrance,,Installed,123
+1,Hoop,Boxing Arena,,Installed,124
+2,Hoop,Piece by Peace,,Installed,125
+4,Hoop,PSCC,,Installed,126
+2,Hoop,Last Days of Autumn Brewing,,Installed,127
+1,Hoop,HomeSource,,Installed,128
+1,Hoop,South Knox Elementary,,Installed,129
+5,Hoop,South Doyle Middle School,,Installed,130
+1,Hoop,Round Up Restaurant,,Installed,131
+3,Hoop,Mooreland Heights Elementary,,Installed,132
+4,Hoop - Rail mounted,Ijams Naure Center,,Installed,133
+6,Ulockit,Dogwood Elementary,,Installed,134
+5,Hoop,Public House/Tn Valley Bikes,,Installed,135
+1,Hitch,,,Installed,136
+4,Hitch,Broadway and Glenwood Building,,Installed,137
+5,Bike corral,Central Flats & Taps,,Installed,138
+7,Hoop - Rail mounted,Hops and Hollers,,Installed,139
+2,Hitch,South side of Flats and Taps,,Installed,140
+3,Hoop,Fulton High School,,Installed,141
+2,Hoop,Birdhouse,,Installed,142
+5,Hoop,Beaumont Elementary,,Installed,143
+6,Hoop - Rail mounted,Crafty Bastard,,Installed,144
+3,Hoop,Central Collective,,Installed,145
+2,Hoop,Makers Donuts,,Installed,146
+1,Hitch,Companion Animal Hospital,,Installed,147
+4,Hoop,Maple Chase Condos,,Installed,148
+4,Hoop,Krogers,,Installed,149
+9,Hoop,PSCC,,Installed,150
+3,Hoop - Rail mounted,Pinnacle Tower,,Installed,151
+3,Hoop,Westview Tower,,Installed,152
+2,Hoop,Union Jacks,,Installed,153
+2,Hoop,Bearden Elementary School,,Installed,154
+1,Hoop,WVLT,,Installed,155
+7,Hoop,Northwest Middle School,,Installed,156
+3,Ulockit,Adrian Burnett Elementary School,,Installed,157
+19,Hoop,Maryville College,,Installed,158
+3,Hoop,Blount County Library,,Installed,159
+4,Hoop,Vienna Coffee,,Installed,160
+3,Hoop,Vienna Coffe,,Installed,161
+4,Other,3 Rivers Market,,Installed,162
+3,Hoop,3 Rivers market,,Installed,163
+3,Hoop,Clayton Park,,Installed,164
+1,Hitch,Pete's Coffee,,Installed,165
+1,Hitch,Yassin's Falafel,,Planned,166
+1,Hitch,Parkway Shopping Center,,Installed,167
+4,Ulockit,Shoneys,,Installed,168
+2,Hoop,Knox County Health Department,,Installed,169
+4,Ulockit,Minvilla Manor,,Installed,170
+4,Hoop,K Brew,,Installed,171
+5,Hoop,Lonsdale Elementary,,Installed,172
+4,Hoop,Tomato Head,,Installed,173
+2,Hoop,Next to Capitol Coffee,,Installed,174
+2,Hoop,Professional Hair Design,,Installed,175
+1,Hoop,National Fitness Maryville,,Installed,176
+2,Hoop,Southland Cafe,,Installed,177
+2,Hoop,Alcoa City Hall,,Installed,178
+1,Hoop,Tennessee Vein Center,,Installed,179
+,Hoop,Creech Property,,Installed,180
+2,Hoop,3 Minute Car Wash,,Installed,181
+3,Hoop,GSMNP,,Installed,182
+5,Hoop,Oak Ridge Unitarian Universalist Church,,Installed,183
+8,Hoop,Jackson Square,,Installed,184
+,Hoop,Lasalle Park West,,Installed,185
+,Hitch,,,To Be Replaced,186
+,Hitch,,,To Be Replaced,187
+1,Hitch,First Tennessee Plaza,,Installed,188
+5,Bike corral,on street near,,Installed,189
+1,Hoop,(formerly Marie's),,Installed,190
+1,Hoop,Regions Bank,,Installed,191
+2,Hoop,Central United Methodist Church,,Installed,192
+4,Hoop,The Restoration House,,Installed,193
+3,Hoop,Sam Duff Park,,Installed,194
+2,Hoop,Mill and Mine,,Installed,195
+1,Hitch,World's Fair Park,,Installed,196
+2,Hoop,HoneyBee Coffee,,Installed,197
+1,,Karns Middle School,,Installed,198
+3,Hoop,Alliance Brewing Company,,Installed,199
+1,Ulockit,Renegade Yoga,,Installed,200
+1,Hitch,,,Installed,201
+1,Hoop,EdFinancial,,Installed,202
+10,Hoop,Maryville College,,Installed,203
+4,Ulockit,UT Institute of Public Service,,Installed,204
+2,Hitch,YMCA,,Installed,205
+1,Hoop,A Dopo Pizza,,Installed,206
+1,Hitch,outside of Central Depot Bar,,Installed,207
+1,Hitch,,,Installed,208
+1,Hitch,,,Installed,209
+1,Hitch,near rowboat guy,,Installed,210
+5,Hoop,Abridged Beer Co,,Installed,211
+3,Hoop,Elkmont Exchange,,Installed,212
+2,Hoop,Vestal Boys and Girls Club,,Installed,213
+2,Hoop,Kybra Athletics,,Installed,214
+3,Bike corral,on Church in front of Yassin's,,Installed,215
+1,Hitch,,,Installed,216
+1,Hitch,,,Installed,217
+3,Hoop,by the entrance to Trailhead,,Installed,218
+1,Hoop,around the basketball court,,Planned,219
+1,Hoop,near the creek,,Planned,220
+1,Hitch,,,Installed,221
+1,Hoop,Dream Bikes,,Installed,222
+2,Hitch,Sharps Ridge - Picnic Area,,Installed,223
