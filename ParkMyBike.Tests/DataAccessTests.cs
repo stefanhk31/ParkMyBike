@@ -1,14 +1,11 @@
 using ParkMyBike.Data;
 using ParkMyBike.Data.Entities;
-using ParkMyBike.Enums;
 using ParkMyBike.Models;
-using System;
 using System.Linq;
 using Xunit;
 using Moq;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
-
 
 namespace ParkMyBike.Tests
 {
@@ -59,7 +56,6 @@ namespace ParkMyBike.Tests
         [Fact]
         public void CanGetAllBikeRacksFromDatabase()
         {
-
             var newRack = new Mock<BikeRack>();
             var secondNewRack = new Mock<BikeRack>();
 
@@ -111,7 +107,6 @@ namespace ParkMyBike.Tests
 
             Assert.Equal(3, result.NumberOfRacks);
             mockContext.Verify(m => m.SaveChanges(), Times.Once);
-
         }
 
         [Fact]
@@ -129,6 +124,5 @@ namespace ParkMyBike.Tests
             mockSet.Verify(m => m.Remove(It.IsAny<BikeRack>()), Times.Once);
             mockContext.Verify(m => m.SaveChanges(), Times.Once);
         }
-
     }
 }

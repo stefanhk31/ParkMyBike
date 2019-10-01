@@ -9,6 +9,7 @@ using CsvHelper;
 using EFCore.Seeder.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using ParkMyBike.Data;
 using ParkMyBike.Data.Entities;
 
@@ -29,7 +30,6 @@ namespace ParkMyBike.Data
 
         public void Seed()
         {
-
             _ctx.Database.EnsureCreated();
 
             if (!_ctx.BikeRacks.Any())
@@ -42,8 +42,8 @@ namespace ParkMyBike.Data
                 var racksFilePath = Path.Combine(_hosting.ContentRootPath, "Data/test-bike-racks.json");
                 var racksJson = File.ReadAllText(racksFilePath);
                 var racks = JsonConvert.DeserializeObject<IEnumerable<BikeRack>>(racksJson);
-                _ctx.BikeRacks.AddRange(racks);
 
+                _ctx.BikeRacks.AddRange(racks);
                 _ctx.SaveChanges();
 
             }
