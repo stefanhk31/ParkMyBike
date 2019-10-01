@@ -36,7 +36,7 @@
     "CoordinatesId": 5,
     "NumberOfRacks": 6,
     "LocationDescription": "Bearden",
-    "Status": "To Be Replaced",
+    "Status": "ToBeReplaced",
     "RackType": "Hitch"
   }
 ]
