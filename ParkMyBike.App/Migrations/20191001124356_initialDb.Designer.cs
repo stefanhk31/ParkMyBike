@@ -9,7 +9,7 @@ using ParkMyBike.Data;
 namespace ParkMyBike.Migrations
 {
     [DbContext(typeof(BikeRackContext))]
-    [Migration("20190913123221_initialDb")]
+    [Migration("20191001124356_initialDb")]
     partial class initialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,14 +33,6 @@ namespace ParkMyBike.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Coordinates");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Latitude = 36.014081300000001,
-                            Longitude = -83.956911899999994
-                        });
                 });
 
             modelBuilder.Entity("ParkMyBike.Data.Entities.BikeRack", b =>
@@ -62,17 +54,6 @@ namespace ParkMyBike.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("BikeRacks");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CoordinatesId = 1,
-                            LocationDescription = "My Home",
-                            NumberOfRacks = 1,
-                            RackType = 3,
-                            Status = 0
-                        });
                 });
 #pragma warning restore 612, 618
         }

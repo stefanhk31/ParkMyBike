@@ -1,0 +1,42 @@
+[
+  {
+    "Id": 1,
+    "CoordinatesId": 1,
+    "NumberOfRacks": 1,
+    "LocationDescription": "Home",
+    "Status": "Installed",
+    "RackType": "Other"
+  },
+  {
+    "Id": 2,
+    "CoordinatesId": 2,
+    "NumberOfRacks": 2,
+    "LocationDescription": "Downtown",
+    "Status": "Installed",
+    "RackType": "Hitch"
+  },
+  {
+    "Id": 3,
+    "CoordinatesId": 3,
+    "NumberOfRacks": 2,
+    "LocationDescription": "Campus",
+    "Status": "Installed",
+    "RackType": "Hoop"
+  },
+  {
+    "Id": 4,
+    "CoordinatesId": 4,
+    "NumberOfRacks": 1,
+    "LocationDescription": "Ijams",
+    "Status": "Planned",
+    "RackType": "Ulockit"
+  },
+  {
+    "Id": 5,
+    "CoordinatesId": 5,
+    "NumberOfRacks": 6,
+    "LocationDescription": "Bearden",
+    "Status": "To Be Replaced",
+    "RackType": "Hitch"
+  }
+]
