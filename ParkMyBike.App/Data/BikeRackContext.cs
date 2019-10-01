@@ -19,35 +19,7 @@ namespace ParkMyBike.Data
 
         }
 
-        public DbSet<BikeRack> BikeRacks { get; set; }
-        public DbSet<Coordinates> Coordinates { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-
-            Coordinates initialCoords = new Coordinates
-            {
-                Id = 1,
-                Longitude = -83.9569119,
-                Latitude = 36.0140813
-            };
-
-            BikeRack initialBikeRack = new BikeRack
-            {
-                Id = 1,
-                CoordinatesId = 1,
-                NumberOfRacks = 1,
-                LocationDescription = "My Home",
-                Status = RackStatus.Installed,
-                RackType = RackType.Other
-            };
-
-            modelBuilder.Entity<Coordinates>()
-                .HasData(initialCoords);
-
-            modelBuilder.Entity<BikeRack>()
-                .HasData(initialBikeRack);
-        }
+        public virtual DbSet<BikeRack> BikeRacks { get; set; }
+        public virtual DbSet<Coordinates> Coordinates { get; set; }
     }
 }

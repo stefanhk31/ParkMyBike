@@ -30,19 +30,23 @@ namespace ParkMyBike.Data
         public void Seed()
         {
 
-            // TODO: use seeder when full dataset is available for database
-            //_ctx.Database.EnsureCreated();
+            _ctx.Database.EnsureCreated();
 
-            //if (!_ctx.BikeRacks.Any())
-            //{
-            //    var filepath = Path.Combine(_hosting.ContentRootPath, "Data/attributes-dev.json");
-            //    var json = File.ReadAllText(filepath);
-            //    var racks = JsonConvert.DeserializeObject<IEnumerable<BikeRack>>(json);
-            //    _ctx.BikeRacks.AddRange(racks);
+            if (!_ctx.BikeRacks.Any())
+            {
+                var coordsFilePath = Path.Combine(_hosting.ContentRootPath, "Data/test-coordinates.json");
+                var coordsJson = File.ReadAllText(coordsFilePath);
+                var coords = JsonConvert.DeserializeObject<IEnumerable<Coordinates>>(coordsJson);
+                _ctx.Coordinates.AddRange(coords);
 
-            //    _ctx.SaveChanges();
+                var racksFilePath = Path.Combine(_hosting.ContentRootPath, "Data/test-bike-racks.json");
+                var racksJson = File.ReadAllText(racksFilePath);
+                var racks = JsonConvert.DeserializeObject<IEnumerable<BikeRack>>(racksJson);
+                _ctx.BikeRacks.AddRange(racks);
 
-            //}
+                _ctx.SaveChanges();
+
+            }
 
         }
     }

@@ -35,6 +35,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20191001124121_initialDb.cs" />
+    <Compile Remove="Migrations\20191001124121_initialDb.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="ClientApp\old-angular.zip" />
     <None Remove="ClientApp\old-angular.zip" />
     <None Remove="Data\BikeRacks.csv" />

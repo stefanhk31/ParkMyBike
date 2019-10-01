@@ -37,16 +37,6 @@ namespace ParkMyBike.Migrations
                 {
                     table.PrimaryKey("PK_Coordinates", x => x.Id);
                 });
-
-            migrationBuilder.InsertData(
-                table: "BikeRacks",
-                columns: new[] { "Id", "CoordinatesId", "LocationDescription", "NumberOfRacks", "RackType", "Status" },
-                values: new object[] { 1, 1, "My Home", 1, 3, 0 });
-
-            migrationBuilder.InsertData(
-                table: "Coordinates",
-                columns: new[] { "Id", "Latitude", "Longitude" },
-                values: new object[] { 1, 36.014081300000001, -83.956911899999994 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
