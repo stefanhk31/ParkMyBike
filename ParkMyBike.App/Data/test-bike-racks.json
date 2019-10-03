@@ -1,6 +1,6 @@
 [
   {
-    "Id": 1,
+    "Id": 0,
     "CoordinatesId": 1,
     "NumberOfRacks": 1,
     "LocationDescription": "Home",
@@ -8,7 +8,7 @@
     "RackType": "Other"
   },
   {
-    "Id": 2,
+    "Id": 0,
     "CoordinatesId": 2,
     "NumberOfRacks": 2,
     "LocationDescription": "Downtown",
@@ -16,7 +16,7 @@
     "RackType": "Hitch"
   },
   {
-    "Id": 3,
+    "Id": 0,
     "CoordinatesId": 3,
     "NumberOfRacks": 2,
     "LocationDescription": "Campus",
@@ -24,7 +24,7 @@
     "RackType": "Hoop"
   },
   {
-    "Id": 4,
+    "Id": 0,
     "CoordinatesId": 4,
     "NumberOfRacks": 1,
     "LocationDescription": "Ijams",
@@ -32,7 +32,7 @@
     "RackType": "Ulockit"
   },
   {
-    "Id": 5,
+    "Id": 0,
     "CoordinatesId": 5,
     "NumberOfRacks": 6,
     "LocationDescription": "Bearden",
