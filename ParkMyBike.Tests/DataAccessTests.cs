@@ -3,126 +3,134 @@ using ParkMyBike.Data.Entities;
 using ParkMyBike.Models;
 using System.Linq;
 using Xunit;
-using Moq;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+using ParkMyBike.Enums;
+
 
 namespace ParkMyBike.Tests
 {
     public class DataAccessTests
     {
+        public Coordinates GenerateTestCoordinates(int id)
+        {
+            return new Coordinates()
+            {
+                Id = id,
+                Latitude = 0.00,
+                Longitude = 0.00
+            };
+        }
+
+        public BikeRack GenerateTestBikeRack(int rackId, int coordsId)
+        {
+            return new BikeRack()
+            {
+                Id = rackId,
+                CoordinatesId = coordsId,
+                NumberOfRacks = 2,
+                LocationDescription = "Test",
+                Status = RackStatus.Installed,
+                RackType = RackType.Hitch
+            };
+        }
+
         [Fact]
         public void CanAddBikeRackToDatabase()
         {
-            var newRack = new Mock<BikeRack>();
-            var mockSet = new Mock<DbSet<BikeRack>>();
-            var mockContext = new Mock<BikeRackContext>();
+            using (var factory = new BikeRackContextFactory())
+            {
+                using (var context = factory.CreateContext())
+                {
+                    var coords = GenerateTestCoordinates(1);
+                    var rack = GenerateTestBikeRack(1, coords.Id);
+                    var repository = new BikeRackRepository(context);
+                    repository.AddBikeRack(rack);
 
-            mockContext.Setup(c => c.BikeRacks).Returns(mockSet.Object);
-
-            var repository = new BikeRackRepository(mockContext.Object);
-            repository.AddBikeRack(newRack.Object);
-
-            mockSet.Verify(m => m.Add(It.IsAny<BikeRack>()), Times.Once);
-            mockContext.Verify(m => m.SaveChanges(), Times.Once);
+                    var result =  context.BikeRacks.Count();
+                    Assert.Equal(1, result);
+                }
+            }
         }
 
         [Fact]
         public void CanViewSingleBikeRackFromDatabase()
         {
-            var newRack = new Mock<BikeRack>();
-
-            IQueryable<BikeRack> bikeRacks = new List<BikeRack>
+            using (var factory = new BikeRackContextFactory())
             {
-                newRack.Object
-            }.AsQueryable();
+                using (var context = factory.CreateContext())
+                {
+                    var coords = GenerateTestCoordinates(1);
+                    var rack = GenerateTestBikeRack(1, coords.Id);
+                    var repository = new BikeRackRepository(context);
+                    repository.AddBikeRack(rack);
 
-            var mockSet = new Mock<DbSet<BikeRack>>();
-            mockSet.As<IQueryable<BikeRack>>().Setup(m => m.Provider).Returns(bikeRacks.Provider);
-            mockSet.As<IQueryable<BikeRack>>().Setup(m => m.Expression).Returns(bikeRacks.Expression);
-            mockSet.As<IQueryable<BikeRack>>().Setup(m => m.ElementType).Returns(bikeRacks.ElementType);
-            mockSet.As<IQueryable<BikeRack>>().Setup(m => m.GetEnumerator()).Returns(bikeRacks.GetEnumerator());
-
-            var mockContext = new Mock<BikeRackContext>();
-            mockContext.Setup(c => c.BikeRacks).Returns(mockSet.Object);
-
-            var repository = new BikeRackRepository(mockContext.Object);
-            repository.AddBikeRack(newRack.Object);
-            var result = repository.ViewSingleBikeRack(newRack.Object.Id);
-
-            Assert.Equal(newRack.Object.Id, result.Id);
+                    var result = repository.ViewSingleBikeRack(rack.Id);
+                    Assert.Equal(rack.Id, result.Id);
+                }
+            }
         }
 
         [Fact]
         public void CanGetAllBikeRacksFromDatabase()
         {
-            var newRack = new Mock<BikeRack>();
-            var secondNewRack = new Mock<BikeRack>();
-
-            IQueryable<BikeRack> bikeRacks = new List<BikeRack>
+            using (var factory = new BikeRackContextFactory())
             {
-                newRack.Object,
-                secondNewRack.Object
-            }.AsQueryable();
+                using (var context = factory.CreateContext())
+                {
+                    var coords = GenerateTestCoordinates(1);
+                    var secondCoords = GenerateTestCoordinates(2);
+                    var rack = GenerateTestBikeRack(1, coords.Id);
+                    var secondRack = GenerateTestBikeRack(2, secondCoords.Id);
+                    var repository = new BikeRackRepository(context);
+                    repository.AddBikeRack(rack);
+                    repository.AddBikeRack(secondRack);
 
-            var mockSet = new Mock<DbSet<BikeRack>>();
-            mockSet.As<IQueryable<BikeRack>>().Setup(m => m.Provider).Returns(bikeRacks.Provider);
-            mockSet.As<IQueryable<BikeRack>>().Setup(m => m.Expression).Returns(bikeRacks.Expression);
-            mockSet.As<IQueryable<BikeRack>>().Setup(m => m.ElementType).Returns(bikeRacks.ElementType);
-            mockSet.As<IQueryable<BikeRack>>().Setup(m => m.GetEnumerator()).Returns(bikeRacks.GetEnumerator());
-
-            var mockContext = new Mock<BikeRackContext>();
-            mockContext.Setup(c => c.BikeRacks).Returns(mockSet.Object);
-
-            var repository = new BikeRackRepository(mockContext.Object);
-            var result = repository.GetAllBikeRacks();
-
-            Assert.Equal(2, result.Count());
-            Assert.Equal(result.First().Id, newRack.Object.Id);
-            Assert.Equal(result.Last().Id, secondNewRack.Object.Id);
+                    var result = repository.GetAllBikeRacks();
+                    Assert.Equal(2, result.Count());
+                    Assert.Equal(result.First().Id, rack.Id);
+                    Assert.Equal(result.Last().Id, secondRack.Id);
+                }
+            }
         }
 
         [Fact]
         public void CanUpdateNumberOfBikeRacks()
         {
-            var newRack = new Mock<BikeRack>();
-
-            IQueryable<BikeRack> bikeRacks = new List<BikeRack>
+            using (var factory = new BikeRackContextFactory())
             {
-                newRack.Object
-            }.AsQueryable();
+                using (var context = factory.CreateContext())
+                {
+                    var coords = GenerateTestCoordinates(1);
+                    var rack = GenerateTestBikeRack(1, coords.Id);
+                    var repository = new BikeRackRepository(context);
+                    repository.AddBikeRack(rack);
 
-            var mockSet = new Mock<DbSet<BikeRack>>();
-            mockSet.As<IQueryable<BikeRack>>().Setup(m => m.Provider).Returns(bikeRacks.Provider);
-            mockSet.As<IQueryable<BikeRack>>().Setup(m => m.Expression).Returns(bikeRacks.Expression);
-            mockSet.As<IQueryable<BikeRack>>().Setup(m => m.ElementType).Returns(bikeRacks.ElementType);
-            mockSet.As<IQueryable<BikeRack>>().Setup(m => m.GetEnumerator()).Returns(bikeRacks.GetEnumerator());
-
-            var mockContext = new Mock<BikeRackContext>();
-            mockContext.Setup(c => c.BikeRacks).Returns(mockSet.Object);
-
-            var repository = new BikeRackRepository(mockContext.Object);
-            repository.AddBikeRack(newRack.Object);
-            var result = repository.UpdateNumberofRacksOnBikeRack(newRack.Object.Id, 3);
-
-            Assert.Equal(3, result.NumberOfRacks);
-            mockContext.Verify(m => m.SaveChanges(), Times.Once);
+                    var result = repository.UpdateNumberofRacksOnBikeRack(rack.Id, 3);
+                    Assert.Equal(3, result.NumberOfRacks);
+                }
+            }
         }
 
         [Fact]
         public void CanRemoveBikeRackFromDatabase()
         {
-            var newRack = new Mock<BikeRack>();
-            var mockSet = new Mock<DbSet<BikeRack>>();
-            var mockContext = new Mock<BikeRackContext>();
+            using (var factory = new BikeRackContextFactory())
+            {
+                using (var context = factory.CreateContext())
+                {
+                    var coords = GenerateTestCoordinates(1);
+                    var secondCoords = GenerateTestCoordinates(2);
+                    var rack = GenerateTestBikeRack(1, coords.Id);
+                    var secondRack = GenerateTestBikeRack(2, secondCoords.Id);
+                    var repository = new BikeRackRepository(context);
+                    repository.AddBikeRack(rack);
+                    repository.AddBikeRack(secondRack);
+                    repository.DeleteBikeRack(rack);
 
-            mockContext.Setup(c => c.BikeRacks).Returns(mockSet.Object);
-
-            var repository = new BikeRackRepository(mockContext.Object);
-            repository.DeleteBikeRack(newRack.Object);
-
-            mockSet.Verify(m => m.Remove(It.IsAny<BikeRack>()), Times.Once);
-            mockContext.Verify(m => m.SaveChanges(), Times.Once);
+                    var result = repository.GetAllBikeRacks();
+                    Assert.Single(result);
+                    Assert.Equal(result.First().Id, secondRack.Id);
+                }
+            }
         }
     }
 }
