@@ -11,6 +11,20 @@ namespace ParkMyBike.Tests
 {
     public class DataAccessTests
     {
+
+        private BikeRackContextFactory _factory;
+        private BikeRackContext _context;
+        private ILogger<BikeRackRepository> _logger;
+        private BikeRackRepository _repository;
+
+        public DataAccessTests()
+        {
+            _factory = new BikeRackContextFactory();
+            _context = _factory.CreateContext();
+            _logger = Mock.Of<ILogger<BikeRackRepository>>();
+            _repository = new BikeRackRepository(_context, _logger);
+        }
+
         public Coordinates GenerateTestCoordinates(int id)
         {
             return new Coordinates()
@@ -37,111 +51,66 @@ namespace ParkMyBike.Tests
         [Fact]
         public void CanAddBikeRackToDatabase()
         {
-            using (var factory = new BikeRackContextFactory())
-            {
-                var logger = Mock.Of<ILogger<BikeRackRepository>>();
+            var coords = GenerateTestCoordinates(1);
+            var rack = GenerateTestBikeRack(1, coords.Id);
+            _repository.AddBikeRack(rack);
 
-                using (var context = factory.CreateContext())
-                {
-                    var coords = GenerateTestCoordinates(1);
-                    var rack = GenerateTestBikeRack(1, coords.Id);
-                    var repository = new BikeRackRepository(context, logger);
-                    repository.AddBikeRack(rack);
-
-                    var result =  context.BikeRacks.Count();
-                    Assert.Equal(1, result);
-                }
-            }
+            var result = _context.BikeRacks.Count();
+            Assert.Equal(1, result);
         }
 
         [Fact]
         public void CanViewSingleBikeRackFromDatabase()
         {
-            using (var factory = new BikeRackContextFactory())
-            {
-                var logger = Mock.Of<ILogger<BikeRackRepository>>();
+            var coords = GenerateTestCoordinates(1);
+            var rack = GenerateTestBikeRack(1, coords.Id);
+            _repository.AddBikeRack(rack);
 
-                using (var context = factory.CreateContext())
-                {
-                    var coords = GenerateTestCoordinates(1);
-                    var rack = GenerateTestBikeRack(1, coords.Id);
-                    var repository = new BikeRackRepository(context, logger);
-                    repository.AddBikeRack(rack);
-
-                    var result = repository.ViewSingleBikeRack(rack.Id);
-                    Assert.Equal(rack.Id, result.Id);
-                }
-            }
+            var result = _repository.ViewSingleBikeRack(rack.Id);
+            Assert.Equal(rack.Id, result.Id);
         }
 
         [Fact]
         public void CanGetAllBikeRacksFromDatabase()
         {
-            using (var factory = new BikeRackContextFactory())
-            {
-                var logger = Mock.Of<ILogger<BikeRackRepository>>();
+            var coords = GenerateTestCoordinates(1);
+            var secondCoords = GenerateTestCoordinates(2);
+            var rack = GenerateTestBikeRack(1, coords.Id);
+            var secondRack = GenerateTestBikeRack(2, secondCoords.Id);
+            _repository.AddBikeRack(rack);
+            _repository.AddBikeRack(secondRack);
 
-                using (var context = factory.CreateContext())
-                {
-                    var coords = GenerateTestCoordinates(1);
-                    var secondCoords = GenerateTestCoordinates(2);
-                    var rack = GenerateTestBikeRack(1, coords.Id);
-                    var secondRack = GenerateTestBikeRack(2, secondCoords.Id);
-                    var repository = new BikeRackRepository(context, logger);
-                    repository.AddBikeRack(rack);
-                    repository.AddBikeRack(secondRack);
-
-                    var result = repository.GetAllBikeRacks();
-                    Assert.Equal(2, result.Count());
-                    Assert.Equal(result.First().Id, rack.Id);
-                    Assert.Equal(result.Last().Id, secondRack.Id);
-                }
-            }
+            var result = _repository.GetAllBikeRacks();
+            Assert.Equal(2, result.Count());
+            Assert.Equal(result.First().Id, rack.Id);
+            Assert.Equal(result.Last().Id, secondRack.Id);
         }
 
         [Fact]
         public void CanUpdateNumberOfBikeRacks()
         {
-            using (var factory = new BikeRackContextFactory())
-            {
-                var logger = Mock.Of<ILogger<BikeRackRepository>>();
+            var coords = GenerateTestCoordinates(1);
+            var rack = GenerateTestBikeRack(1, coords.Id);
+            _repository.AddBikeRack(rack);
 
-                using (var context = factory.CreateContext())
-                {
-                    var coords = GenerateTestCoordinates(1);
-                    var rack = GenerateTestBikeRack(1, coords.Id);
-                    var repository = new BikeRackRepository(context, logger);
-                    repository.AddBikeRack(rack);
-
-                    var result = repository.UpdateNumberofRacksOnBikeRack(rack.Id, 3);
-                    Assert.Equal(3, result.NumberOfRacks);
-                }
-            }
+            var result = _repository.UpdateNumberofRacksOnBikeRack(rack.Id, 3);
+            Assert.Equal(3, result.NumberOfRacks);
         }
 
         [Fact]
         public void CanRemoveBikeRackFromDatabase()
         {
-            using (var factory = new BikeRackContextFactory())
-            {
-                var logger = Mock.Of<ILogger<BikeRackRepository>>();
+            var coords = GenerateTestCoordinates(1);
+            var secondCoords = GenerateTestCoordinates(2);
+            var rack = GenerateTestBikeRack(1, coords.Id);
+            var secondRack = GenerateTestBikeRack(2, secondCoords.Id);
+            _repository.AddBikeRack(rack);
+            _repository.AddBikeRack(secondRack);
+            _repository.DeleteBikeRack(rack);
 
-                using (var context = factory.CreateContext())
-                {
-                    var coords = GenerateTestCoordinates(1);
-                    var secondCoords = GenerateTestCoordinates(2);
-                    var rack = GenerateTestBikeRack(1, coords.Id);
-                    var secondRack = GenerateTestBikeRack(2, secondCoords.Id);
-                    var repository = new BikeRackRepository(context, logger);
-                    repository.AddBikeRack(rack);
-                    repository.AddBikeRack(secondRack);
-                    repository.DeleteBikeRack(rack);
-
-                    var result = repository.GetAllBikeRacks();
-                    Assert.Single(result);
-                    Assert.Equal(result.First().Id, secondRack.Id);
-                }
-            }
+            var result = _repository.GetAllBikeRacks();
+            Assert.Single(result);
+            Assert.Equal(result.First().Id, secondRack.Id);
         }
     }
 }
