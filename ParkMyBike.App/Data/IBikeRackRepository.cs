@@ -8,7 +8,7 @@ namespace ParkMyBike.Data
 {
     public interface IBikeRackRepository
     {
-        List<BikeRack> GetAllBikeRacks();
+        IEnumerable<BikeRack> GetAllBikeRacks();
         BikeRack AddBikeRack(BikeRack rack);
         BikeRack UpdateNumberofRacksOnBikeRack(int rackId, int newNumberOfRacks);
         BikeRack ViewSingleBikeRack(int rackId);
