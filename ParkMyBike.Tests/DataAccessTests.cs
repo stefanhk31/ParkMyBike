@@ -4,7 +4,8 @@ using ParkMyBike.Models;
 using System.Linq;
 using Xunit;
 using ParkMyBike.Enums;
-
+using Moq;
+using Microsoft.Extensions.Logging;
 
 namespace ParkMyBike.Tests
 {
@@ -38,11 +39,13 @@ namespace ParkMyBike.Tests
         {
             using (var factory = new BikeRackContextFactory())
             {
+                var logger = Mock.Of<ILogger<BikeRackRepository>>();
+
                 using (var context = factory.CreateContext())
                 {
                     var coords = GenerateTestCoordinates(1);
                     var rack = GenerateTestBikeRack(1, coords.Id);
-                    var repository = new BikeRackRepository(context);
+                    var repository = new BikeRackRepository(context, logger);
                     repository.AddBikeRack(rack);
 
                     var result =  context.BikeRacks.Count();
@@ -56,11 +59,13 @@ namespace ParkMyBike.Tests
         {
             using (var factory = new BikeRackContextFactory())
             {
+                var logger = Mock.Of<ILogger<BikeRackRepository>>();
+
                 using (var context = factory.CreateContext())
                 {
                     var coords = GenerateTestCoordinates(1);
                     var rack = GenerateTestBikeRack(1, coords.Id);
-                    var repository = new BikeRackRepository(context);
+                    var repository = new BikeRackRepository(context, logger);
                     repository.AddBikeRack(rack);
 
                     var result = repository.ViewSingleBikeRack(rack.Id);
@@ -74,13 +79,15 @@ namespace ParkMyBike.Tests
         {
             using (var factory = new BikeRackContextFactory())
             {
+                var logger = Mock.Of<ILogger<BikeRackRepository>>();
+
                 using (var context = factory.CreateContext())
                 {
                     var coords = GenerateTestCoordinates(1);
                     var secondCoords = GenerateTestCoordinates(2);
                     var rack = GenerateTestBikeRack(1, coords.Id);
                     var secondRack = GenerateTestBikeRack(2, secondCoords.Id);
-                    var repository = new BikeRackRepository(context);
+                    var repository = new BikeRackRepository(context, logger);
                     repository.AddBikeRack(rack);
                     repository.AddBikeRack(secondRack);
 
@@ -97,11 +104,13 @@ namespace ParkMyBike.Tests
         {
             using (var factory = new BikeRackContextFactory())
             {
+                var logger = Mock.Of<ILogger<BikeRackRepository>>();
+
                 using (var context = factory.CreateContext())
                 {
                     var coords = GenerateTestCoordinates(1);
                     var rack = GenerateTestBikeRack(1, coords.Id);
-                    var repository = new BikeRackRepository(context);
+                    var repository = new BikeRackRepository(context, logger);
                     repository.AddBikeRack(rack);
 
                     var result = repository.UpdateNumberofRacksOnBikeRack(rack.Id, 3);
@@ -115,13 +124,15 @@ namespace ParkMyBike.Tests
         {
             using (var factory = new BikeRackContextFactory())
             {
+                var logger = Mock.Of<ILogger<BikeRackRepository>>();
+
                 using (var context = factory.CreateContext())
                 {
                     var coords = GenerateTestCoordinates(1);
                     var secondCoords = GenerateTestCoordinates(2);
                     var rack = GenerateTestBikeRack(1, coords.Id);
                     var secondRack = GenerateTestBikeRack(2, secondCoords.Id);
-                    var repository = new BikeRackRepository(context);
+                    var repository = new BikeRackRepository(context, logger);
                     repository.AddBikeRack(rack);
                     repository.AddBikeRack(secondRack);
                     repository.DeleteBikeRack(rack);
