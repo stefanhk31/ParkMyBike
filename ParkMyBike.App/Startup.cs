@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using ParkMyBike.Data;
+using ParkMyBike.Models;
 
 namespace ParkMyBike
 {
@@ -28,6 +29,7 @@ namespace ParkMyBike
             });
 
             services.AddTransient<BikeRackSeeder>();
+            services.AddTransient<IBikeRackRepository, BikeRackRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
