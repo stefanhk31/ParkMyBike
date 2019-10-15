@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ParkMyBike.Data;
 using ParkMyBike.Data.Entities;
@@ -12,10 +10,12 @@ namespace ParkMyBike.Models
     public class BikeRackRepository : IBikeRackRepository
     {
         private BikeRackContext _bikeRacksDb;
+        private readonly ILogger<BikeRackRepository> _logger;
 
-        public BikeRackRepository(BikeRackContext bikeRacksDb)
+        public BikeRackRepository(BikeRackContext bikeRacksDb, ILogger<BikeRackRepository> logger)
         {
             _bikeRacksDb = bikeRacksDb;
+            _logger = logger;
         }
 
         public BikeRack AddBikeRack(BikeRack rack)
@@ -28,7 +28,8 @@ namespace ParkMyBike.Models
             }
             catch (Exception e)
             {
-                throw new Exception(e.Message);
+                _logger.LogError($"Add Bike Rack failed: {e.Message}");
+                return null;
             }
         }
 
@@ -42,7 +43,8 @@ namespace ParkMyBike.Models
             }
             catch (Exception e)
             {
-                throw new Exception(e.Message);
+                _logger.LogError($"Delete Bike Rack failed: {e.Message}");
+                return null;
             }
         }
 
@@ -57,11 +59,12 @@ namespace ParkMyBike.Models
             }
             catch (Exception e)
             {
-                throw new Exception(e.Message);
+                _logger.LogError($"View Single Bike Rack failed: {e.Message}");
+                return null;
             }
         }
 
-        public List<BikeRack> GetAllBikeRacks()
+        public IEnumerable<BikeRack> GetAllBikeRacks()
         {
             try
             {
@@ -69,7 +72,8 @@ namespace ParkMyBike.Models
             }
             catch (Exception e)
             {
-                throw new Exception(e.Message);
+                _logger.LogError($"Get All Bike Racks failed: {e.Message}");
+                return null;
             }
         }
 
@@ -85,7 +89,8 @@ namespace ParkMyBike.Models
             }
             catch (Exception e)
             {
-                throw new Exception(e.Message);
+                _logger.LogError($"Update Number of Bike Racks failed: {e.Message}");
+                return null;
             }
         }
     }
