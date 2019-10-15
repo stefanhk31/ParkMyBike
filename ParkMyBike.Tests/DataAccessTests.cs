@@ -12,7 +12,6 @@ namespace ParkMyBike.Tests
 {
     public class DataAccessTests
     {
-
         private BikeRackContextFactory _factory;
         private BikeRackContext _context;
         private ILogger<BikeRackRepository> _logger;
@@ -25,7 +24,6 @@ namespace ParkMyBike.Tests
             _logger = Mock.Of<ILogger<BikeRackRepository>>();
             _repository = new BikeRackRepository(_context, _logger);
         }
-
 
         public Coordinates GenerateTestCoordinates(int id)
         {
