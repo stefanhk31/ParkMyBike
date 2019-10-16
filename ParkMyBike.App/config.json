@@ -1,5 +1,12 @@
 {
   "ConnectionStrings": {
     "BikeRackConnectionString": "server=(localdb)\\MSSQLLocalDB;Database=ParkMyBikeDb;Integrated Security=true;MultipleActiveResultSets=true;"
+  },
+
+  "Logging": {
+    "LogLevel": {
+      "ParkMyBike": "Information",
+      "Microsoft":  "Warning"
+    }
   }
 }
