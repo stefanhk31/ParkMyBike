@@ -9,7 +9,7 @@ using ParkMyBike.Data;
 namespace ParkMyBike.Migrations
 {
     [DbContext(typeof(BikeRackContext))]
-    [Migration("20191001124356_initialDb")]
+    [Migration("20191022005418_initialDb")]
     partial class initialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,28 +20,13 @@ namespace ParkMyBike.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ParkMyBike.Data.Coordinates", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("Latitude");
-
-                    b.Property<double>("Longitude");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Coordinates");
-                });
-
             modelBuilder.Entity("ParkMyBike.Data.Entities.BikeRack", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CoordinatesId");
+                    b.Property<string>("LatLong");
 
                     b.Property<string>("LocationDescription");
 
