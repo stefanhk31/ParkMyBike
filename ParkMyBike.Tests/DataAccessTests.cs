@@ -25,23 +25,13 @@ namespace ParkMyBike.Tests
             _repository = new BikeRackRepository(_context, _logger);
         }
 
-        public Coordinates GenerateTestCoordinates(int id)
-        {
-            return new Coordinates()
-            {
-                Id = id,
-                Latitude = 0.00,
-                Longitude = 0.00
-            };
-        }
-
-        public BikeRack GenerateTestBikeRack(int rackId, Coordinates coords)
+        public BikeRack GenerateTestBikeRack(int rackId)
         {
             return new BikeRack()
             {
                 Id = rackId,
-                CoordinatesId = coords.Id,
                 NumberOfRacks = 2,
+                LatLong = "0.0000,0.0000",
                 LocationDescription = "Test",
                 Status = RackStatus.Installed,
                 RackType = RackType.Hitch
@@ -54,7 +44,7 @@ namespace ParkMyBike.Tests
 
             for (var i = 1; i <= numberOfRacksToGenerate; i++)
             {
-                racks.Add(GenerateTestBikeRack(i, GenerateTestCoordinates(i)));
+                racks.Add(GenerateTestBikeRack(i));
             }
 
             return racks;
