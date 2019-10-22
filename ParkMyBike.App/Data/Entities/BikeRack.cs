@@ -12,8 +12,8 @@ namespace ParkMyBike.Data.Entities
     public class BikeRack
     {
         public int Id { get; set; }
-        public int CoordinatesId { get; set; }
         public int NumberOfRacks { get; set; }
+        public string LatLong { get; set; }
         public string LocationDescription { get; set; }
         [JsonProperty("Status")]
         [JsonConverter(typeof(StringEnumConverter))]

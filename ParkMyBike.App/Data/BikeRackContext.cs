@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ParkMyBike.Data.Entities;
-using ParkMyBike.Enums;
 
 namespace ParkMyBike.Data
 {
@@ -20,6 +15,5 @@ namespace ParkMyBike.Data
         }
 
         public virtual DbSet<BikeRack> BikeRacks { get; set; }
-        public virtual DbSet<Coordinates> Coordinates { get; set; }
     }
 }

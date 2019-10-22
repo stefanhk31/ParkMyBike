@@ -18,28 +18,13 @@ namespace ParkMyBike.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ParkMyBike.Data.Coordinates", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("Latitude");
-
-                    b.Property<double>("Longitude");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Coordinates");
-                });
-
             modelBuilder.Entity("ParkMyBike.Data.Entities.BikeRack", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CoordinatesId");
+                    b.Property<string>("LatLong");
 
                     b.Property<string>("LocationDescription");
 
