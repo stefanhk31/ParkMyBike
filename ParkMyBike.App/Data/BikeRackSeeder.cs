@@ -34,18 +34,12 @@ namespace ParkMyBike.Data
 
             if (!_ctx.BikeRacks.Any())
             {
-                var coordsFilePath = Path.Combine(_hosting.ContentRootPath, "Data/test-coordinates.json");
-                var coordsJson = File.ReadAllText(coordsFilePath);
-                var coords = JsonConvert.DeserializeObject<IEnumerable<Coordinates>>(coordsJson);
-                _ctx.Coordinates.AddRange(coords);
-
                 var racksFilePath = Path.Combine(_hosting.ContentRootPath, "Data/test-bike-racks.json");
                 var racksJson = File.ReadAllText(racksFilePath);
                 var racks = JsonConvert.DeserializeObject<IEnumerable<BikeRack>>(racksJson);
 
                 _ctx.BikeRacks.AddRange(racks);
                 _ctx.SaveChanges();
-
             }
 
         }
