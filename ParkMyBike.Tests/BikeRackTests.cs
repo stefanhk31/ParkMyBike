@@ -1,4 +1,4 @@
-﻿
+﻿using ParkMyBike.Resources.Regexes;
 using System.Text.RegularExpressions;
 using Xunit;
 
@@ -12,7 +12,7 @@ namespace ParkMyBike.Tests
             var rack = GenerateTestBikeRack(1);
             var latLong = rack.LatLong;
 
-            bool isProperFormat = Regex.IsMatch(latLong, @"^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$");
+            bool isProperFormat = Regex.IsMatch(latLong, LatLongString.Format);
 
             Assert.True(isProperFormat);
         }
