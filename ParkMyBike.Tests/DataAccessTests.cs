@@ -1,60 +1,15 @@
-using ParkMyBike.Data;
-using ParkMyBike.Data.Entities;
-using ParkMyBike.Models;
 using System.Linq;
-using System.Collections.Generic;
 using Xunit;
-using ParkMyBike.Enums;
-using Moq;
-using Microsoft.Extensions.Logging;
 
 namespace ParkMyBike.Tests
 {
-    public class DataAccessTests
-    {
-        private BikeRackContextFactory _factory;
-        private BikeRackContext _context;
-        private ILogger<BikeRackRepository> _logger;
-        private BikeRackRepository _repository;
-
-        public DataAccessTests()
-        {
-            _factory = new BikeRackContextFactory();
-            _context = _factory.CreateContext();
-            _logger = Mock.Of<ILogger<BikeRackRepository>>();
-            _repository = new BikeRackRepository(_context, _logger);
-        }
-
-        public BikeRack GenerateTestBikeRack(int rackId)
-        {
-            return new BikeRack()
-            {
-                Id = rackId,
-                NumberOfRacks = 2,
-                LatLong = "0.0000,0.0000",
-                LocationDescription = "Test",
-                Status = RackStatus.Installed,
-                RackType = RackType.Hitch
-            };
-        }
-
-        public List<BikeRack> GenerateRacks(int numberOfRacksToGenerate)
-        {
-            var racks = new List<BikeRack>();
-
-            for (var i = 1; i <= numberOfRacksToGenerate; i++)
-            {
-                racks.Add(GenerateTestBikeRack(i));
-            }
-
-            return racks;
-        }
-
+    public class DataAccessTests : BaseTestClass
+    {        
         [Fact]
         public void CanAddBikeRackToDatabase()
         {
-            var racks = GenerateRacks(1);
-            _repository.AddBikeRack(racks[0]);
+            var rack = GenerateTestBikeRack(1);
+            _repository.AddBikeRack(rack);
 
             var result = _context.BikeRacks.Count();
             Assert.Equal(1, result);
@@ -63,11 +18,11 @@ namespace ParkMyBike.Tests
         [Fact]
         public void CanViewSingleBikeRackFromDatabase()
         {
-            var racks = GenerateRacks(1);
-            _repository.AddBikeRack(racks[0]);
+            var rack = GenerateTestBikeRack(1);
+            _repository.AddBikeRack(rack);
 
-            var result = _repository.ViewSingleBikeRack(racks[0].Id);
-            Assert.Equal(racks[0].Id, result.Id);
+            var result = _repository.ViewSingleBikeRack(rack.Id);
+            Assert.Equal(rack.Id, result.Id);
         }
 
         [Fact]
@@ -90,10 +45,10 @@ namespace ParkMyBike.Tests
         [Fact]
         public void CanUpdateNumberOfBikeRacks()
         {
-            var racks = GenerateRacks(1);
-            _repository.AddBikeRack(racks[0]);
+            var rack = GenerateTestBikeRack(1);
+            _repository.AddBikeRack(rack);
 
-            var result = _repository.UpdateNumberofRacksOnBikeRack(racks[0].Id, 3);
+            var result = _repository.UpdateNumberofRacksOnBikeRack(rack.Id, 3);
             Assert.Equal(3, result.NumberOfRacks);
         }
 
