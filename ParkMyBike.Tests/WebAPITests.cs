@@ -1,7 +1,10 @@
 ﻿
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Moq;
 using ParkMyBike.Controllers;
 using ParkMyBike.Data.Entities;
+using ParkMyBike.ViewModels;
 using System.Collections.Generic;
 using Xunit;
 
@@ -10,10 +13,12 @@ namespace ParkMyBike.Tests
     public class WebAPITests : BaseTestClass
     {
         private BikeRacksController _controller;
+        private IMapper _mapper;
 
         public WebAPITests()
         {
-            _controller = new BikeRacksController(_repository, _logger);
+            _mapper = Mock.Of<IMapper>();
+            _controller = new BikeRacksController(_repository, _logger, _mapper);
         }
 
         [Fact]
@@ -43,7 +48,7 @@ namespace ParkMyBike.Tests
         {
             var newRack = GenerateTestBikeRack(1);
             _repository.AddBikeRack(newRack);
-            ActionResult<BikeRack> result = _controller.Post(newRack);
+            ActionResult<BikeRack> result = _controller.Post(_mapper.Map<BikeRack, BikeRackViewModel>(newRack));
             var contentResult = new OkObjectResult(result);
 
             Assert.NotNull(contentResult);
@@ -67,7 +72,7 @@ namespace ParkMyBike.Tests
         {
             var rack = GenerateTestBikeRack(1);
             _repository.AddBikeRack(rack);
-            ActionResult<BikeRack> result = _controller.Delete(rack);
+            ActionResult<BikeRack> result = _controller.Delete(_mapper.Map<BikeRack, BikeRackViewModel>(rack));
             var contentResult = new OkObjectResult(result);
 
             Assert.NotNull(contentResult);

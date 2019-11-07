@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using ParkMyBike.Data;
 using ParkMyBike.Models;
+using AutoMapper;
+using System.Reflection;
 
 namespace ParkMyBike
 {
@@ -27,6 +27,8 @@ namespace ParkMyBike
             {
                 cfg.UseSqlServer(_config.GetConnectionString("BikeRackConnectionString"));
             });
+
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddTransient<BikeRackSeeder>();
             services.AddTransient<IBikeRackRepository, BikeRackRepository>();
