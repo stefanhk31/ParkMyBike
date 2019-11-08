@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ParkMyBike.Data.Entities;
+﻿using System.Collections.Generic;
 
-namespace ParkMyBike.Data
+namespace ParkMyBike.Models
 {
     public interface IBikeRackRepository
     {

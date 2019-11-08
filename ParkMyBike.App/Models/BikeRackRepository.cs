@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.Logging;
-using ParkMyBike.Data;
-using ParkMyBike.Data.Entities;
 
 namespace ParkMyBike.Models
 {

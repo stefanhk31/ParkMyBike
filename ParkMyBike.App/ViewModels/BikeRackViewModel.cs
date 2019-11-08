@@ -1,4 +1,4 @@
-﻿using ParkMyBike.Enums;
+﻿using ParkMyBike.Resources.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace ParkMyBike.ViewModels

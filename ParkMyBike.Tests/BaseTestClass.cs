@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
-using ParkMyBike.Data;
-using ParkMyBike.Data.Entities;
-using ParkMyBike.Enums;
+using ParkMyBike.Resources.Enums;
 using ParkMyBike.Models;
 using System;
 using System.Collections.Generic;

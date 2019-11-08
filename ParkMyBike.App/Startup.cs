@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using ParkMyBike.Data;
+using ParkMyBike.Models;
 using ParkMyBike.Models;
 using AutoMapper;
 using System.Reflection;

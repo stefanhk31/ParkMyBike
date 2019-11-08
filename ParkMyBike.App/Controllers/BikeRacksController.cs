@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ParkMyBike.Data;
-using ParkMyBike.Data.Entities;
 using ParkMyBike.Models;
 using ParkMyBike.ViewModels;
 
