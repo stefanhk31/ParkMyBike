@@ -4,6 +4,7 @@ using ParkMyBike.Resources.Enums;
 using ParkMyBike.Models;
 using System;
 using System.Collections.Generic;
+using AutoMapper;
 
 namespace ParkMyBike.Tests
 {
@@ -13,6 +14,7 @@ namespace ParkMyBike.Tests
         protected BikeRackContext _context;
         protected ILogger<BikeRackRepository> _logger;
         protected BikeRackRepository _repository;
+        protected IMapper _mapper;
 
         public BaseTestClass()
         {
@@ -20,6 +22,7 @@ namespace ParkMyBike.Tests
             _context = _factory.CreateContext();
             _logger = Mock.Of<ILogger<BikeRackRepository>>();
             _repository = new BikeRackRepository(_context, _logger);
+            _mapper = Mock.Of<IMapper>();
         }
 
         public static BikeRack GenerateTestBikeRack(int rackId)

@@ -12,11 +12,9 @@ namespace ParkMyBike.Tests
     public class WebAPITests : BaseTestClass
     {
         private BikeRacksController _controller;
-        private IMapper _mapper;
 
         public WebAPITests()
         {
-            _mapper = Mock.Of<IMapper>();
             _controller = new BikeRacksController(_repository, _logger, _mapper);
         }
 
