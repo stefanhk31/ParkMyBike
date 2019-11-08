@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace ParkMyBike.Enums
+﻿namespace ParkMyBike.Resources.Enums
 {
     public enum RackType
     {

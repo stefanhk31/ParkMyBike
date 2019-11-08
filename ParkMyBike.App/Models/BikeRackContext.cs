@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ParkMyBike.Data.Entities;
 
-namespace ParkMyBike.Data
+namespace ParkMyBike.Models
 {
     public class BikeRackContext : DbContext
     {

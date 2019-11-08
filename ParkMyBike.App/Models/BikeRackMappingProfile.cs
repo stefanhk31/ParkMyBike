@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using ParkMyBike.Data.Entities;
 using ParkMyBike.ViewModels;
 
 namespace ParkMyBike.Models

@@ -2,20 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using CsvHelper;
-using EFCore.Seeder.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using ParkMyBike.Data;
-using ParkMyBike.Data.Entities;
 
 
-
-namespace ParkMyBike.Data
+namespace ParkMyBike.Models
 {
     public class BikeRackSeeder
     {

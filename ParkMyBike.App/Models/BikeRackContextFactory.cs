@@ -1,10 +1,9 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using ParkMyBike.Data;
 using System;
 using System.Data.Common;
 
-namespace ParkMyBike.Tests
+namespace ParkMyBike.Models
 {
     public class BikeRackContextFactory : IDisposable
     {

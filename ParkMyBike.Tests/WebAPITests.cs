@@ -1,9 +1,8 @@
-﻿
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using ParkMyBike.Controllers;
-using ParkMyBike.Data.Entities;
+using ParkMyBike.Models;
 using ParkMyBike.ViewModels;
 using System.Collections.Generic;
 using Xunit;
