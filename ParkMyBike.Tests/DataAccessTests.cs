@@ -1,3 +1,4 @@
+using ParkMyBike.Resources.Enums;
 using System.Linq;
 using Xunit;
 
@@ -50,6 +51,36 @@ namespace ParkMyBike.Tests
 
             var result = _repository.UpdateNumberofRacksOnBikeRack(rack.Id, 3);
             Assert.Equal(3, result.NumberOfRacks);
+        }
+
+        [Fact]
+        public void CanUpdateBikeRackLocationDescription()
+        {
+            var rack = GenerateTestBikeRack(1);
+            _repository.AddBikeRack(rack);
+
+            var result = _repository.UpdateBikeRackLocationDescription(rack.Id, "A new description");
+            Assert.Equal("A new description", result.LocationDescription);
+        }
+
+        [Fact]
+        public void CanUpdateBikeRackStatus()
+        {
+            var rack = GenerateTestBikeRack(1);
+            _repository.AddBikeRack(rack);
+
+            var result = _repository.UpdateBikeRackStatus(rack.Id, RackStatus.ToBeReplaced);
+            Assert.Equal(RackStatus.ToBeReplaced, result.Status);
+        }
+
+        [Fact]
+        public void CanUpdateBikeRackType()
+        {
+            var rack = GenerateTestBikeRack(1);
+            _repository.AddBikeRack(rack);
+
+            var result = _repository.UpdateBikeRackType(rack.Id, RackType.Hoop);
+            Assert.Equal(RackType.Hoop, result.RackType);
         }
 
         [Fact]
