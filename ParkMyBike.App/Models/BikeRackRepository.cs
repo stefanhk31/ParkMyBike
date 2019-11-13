@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.Logging;
+using ParkMyBike.Resources.Enums;
 
 namespace ParkMyBike.Models
 {
@@ -79,15 +80,58 @@ namespace ParkMyBike.Models
         {
             try
             {
-                var rack = _bikeRacksDb.BikeRacks
-                    .Where(br => br.Id == rackId)
-                    .FirstOrDefault();
+                var rack = ViewSingleBikeRack(rackId);
                 rack.NumberOfRacks = newNumberOfRacks;
                 return rack;
             }
             catch (Exception e)
             {
                 _logger.LogError($"Update Number of Bike Racks failed: {e.Message}");
+                return null;
+            }
+        }
+
+        public BikeRack UpdateBikeRackLocationDescription(int rackId, string newDescription)
+        {
+            try
+            {
+                var rack = ViewSingleBikeRack(rackId);
+                rack.LocationDescription = newDescription;
+                return rack;
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Update Bike Rack Location Description failed: {e.Message}");
+                return null;
+            }
+        }
+
+        public BikeRack UpdateBikeRackStatus(int rackId, RackStatus newStatus)
+        {
+            try
+            {
+                var rack = ViewSingleBikeRack(rackId);
+                rack.Status = newStatus;
+                return rack;
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Update Bike Rack Status failed: {e.Message}");
+                return null;
+            }
+        }
+
+        public BikeRack UpdateBikeRackType(int rackId, RackType newType)
+        {
+            try
+            {
+                var rack = ViewSingleBikeRack(rackId);
+                rack.RackType = newType;
+                return rack;
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Update Bike Rack Type failed: {e.Message}");
                 return null;
             }
         }
