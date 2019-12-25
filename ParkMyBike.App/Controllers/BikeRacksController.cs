@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using ParkMyBike.Models;
 using ParkMyBike.Resources.Enums;
 using ParkMyBike.ViewModels;
@@ -27,9 +28,12 @@ namespace ParkMyBike.Controllers
         [Route("api/[Controller]")]
         public ActionResult<IEnumerable<BikeRack>> GetAll()
         {
+            var bikeRacks = _mapper.Map<IEnumerable<BikeRack>, IEnumerable<BikeRackViewModel>>(_repository.GetAllBikeRacks());
+            var bikeRacksJson = JsonConvert.SerializeObject(bikeRacks);
+
             try
             {
-                return Ok(_mapper.Map<IEnumerable<BikeRack>, IEnumerable<BikeRackViewModel>>(_repository.GetAllBikeRacks()));
+                return Ok(bikeRacksJson);
             }
             catch (Exception e)
             {
@@ -151,7 +155,7 @@ namespace ParkMyBike.Controllers
         {
             try
             {
-                BikeRack rackToDelete = _mapper.Map<BikeRackViewModel, BikeRack>(rack);
+                var rackToDelete = _mapper.Map<BikeRackViewModel, BikeRack>(rack);
                 if (rackToDelete != null)
                 {
                     return Ok(_repository.DeleteBikeRack(rackToDelete));
