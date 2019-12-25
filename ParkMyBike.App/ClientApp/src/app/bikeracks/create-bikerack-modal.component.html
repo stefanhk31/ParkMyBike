@@ -1,0 +1,25 @@
+<div bsModal #createBikeRackModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="createBikeRackModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form *ngIf="active" [formGroup]="newBikeRackForm" novalidate (ngSubmit)="save()" autocomplete="off">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        Add New Bike Rack
+                    </h4>
+                    <button type="button" class="close" (click)="close()" aria-label="Close" [disabled]="saving">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>create-bikerack-modal works!</p>
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">Cancel</button>
+                    <button type="submit" class="btn btn-primary blue" [disabled]="!newBikeRackForm.valid"><i class="fa fa-save"></i>
+                        <span>Add</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
