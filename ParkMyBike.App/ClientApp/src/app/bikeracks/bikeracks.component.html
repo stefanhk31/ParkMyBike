@@ -1,1 +1,28 @@
-<p>bikeracks works!</p>
+<h2>Bike Racks:</h2>
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Number of Racks</th>
+            <th>Latitude/Longitude</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let rack of bikeRacks">
+            <td>{{ rack.RackId }}</td>
+            <td>{{ rack.NumberOfRacks }}</td>
+            <td>{{ rack.LatLong }}</td>
+            <td>{{ rack.LocationDescription }}</td>
+            <td>{{ rack.RackType }}</td>
+            <td>{{ rack.RackStatus }}</td>
+            <td><button>Edit</button><button>Delete</button></td>
+        </tr>
+        <tr><button (click)="createBikeRackModal.show()">Add New Rack</button></tr>
+    </tbody>
+</table>
+
+<create-bikerack-modal #createBikeRackModal (modalSave)="getBikeRacks()"></create-bikerack-modal>
