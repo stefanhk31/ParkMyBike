@@ -1,8 +1,8 @@
 export interface BikeRack {
-    id: number;
-    numberOfRacks: number;
-    latLong: string;
-    locationDescription: string;
-    status: string;
-    rackType: string;
+    RackId: number;
+    NumberOfRacks: number;
+    LatLong: string;
+    LocationDescription: string;
+    Status: string;
+    RackType: string;
 }

@@ -25,4 +25,9 @@ export class BikeRacksService {
         }
       ));
   }
+
+  addBikeRack(rack: BikeRack): Observable<boolean> {
+    return this.http.post(this.apiUrl + "/api/bikeRacks/", rack)
+    .pipe(map(() => true));
+  }
 }

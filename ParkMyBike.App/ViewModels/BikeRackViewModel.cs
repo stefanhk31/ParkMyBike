@@ -1,4 +1,6 @@
-﻿using ParkMyBike.Resources.Enums;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using ParkMyBike.Resources.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace ParkMyBike.ViewModels
@@ -13,8 +15,12 @@ namespace ParkMyBike.ViewModels
         public string LatLong { get; set; }
         public string LocationDescription { get; set; }
         [Required]
+        [JsonProperty("Status")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public RackStatus RackStatus { get; set; }
         [Required]
+        [JsonProperty("RackType")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public RackType RackType { get; set; }
     }
 }
