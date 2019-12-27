@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using ParkMyBike.Models;
-using ParkMyBike.Resources.Enums;
 using ParkMyBike.ViewModels;
 
 namespace ParkMyBike.Controllers

@@ -1,4 +1,3 @@
-using ParkMyBike.Resources.Enums;
 using System.Collections.Generic;
 
 namespace ParkMyBike.Models
