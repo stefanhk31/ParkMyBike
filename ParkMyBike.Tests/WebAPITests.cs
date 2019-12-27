@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using ParkMyBike.Controllers;
@@ -47,6 +47,19 @@ namespace ParkMyBike.Tests
             var newRack = GenerateTestBikeRack(1);
             _repository.AddBikeRack(newRack);
             ActionResult<BikeRack> result = _controller.Post(_mapper.Map<BikeRack, BikeRackViewModel>(newRack));
+            var contentResult = new OkObjectResult(result);
+
+            Assert.NotNull(contentResult);
+            Assert.Equal(200, contentResult.StatusCode);
+        }
+
+        [Fact]
+        public void UpdateBikeRackReturnsSuccess()
+        {
+            var rack = GenerateTestBikeRack(1);
+            _repository.AddBikeRack(rack);
+            rack.NumberOfRacks = 3;
+            ActionResult<BikeRack> result = _controller.UpdateBikeRack(_mapper.Map<BikeRack, BikeRackViewModel>(rack));
             var contentResult = new OkObjectResult(result);
 
             Assert.NotNull(contentResult);
