@@ -1,0 +1,53 @@
+<div bsModal #editBikeRackModal="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="editBikeRackModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form *ngIf="active" [formGroup]="editBikeRackForm" novalidate (ngSubmit)="save()" autocomplete="off">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        Edit Existing Bike Rack
+                    </h4>
+                    <button type="button" class="close" (click)="close()" aria-label="Close" [disabled]="saving">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="NumberOfRacks">Number of Racks</label>
+                        <input type="number" min="1" id="NumberOfRacks" class="form-control" formControlName="NumberOfRacks"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="LocationDescription">Description</label>
+                        <input type="text" id="LocationDescription" class="form-control" formControlName="LocationDescription"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="LatLong">Latitiude/Longitude</label>
+                        <input type="text" id="LatLong" class="form-control" formControlName="LatLong"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="Status">Status</label>
+                        <select id="Status" formControlName="Status">
+                            <option *ngFor="let status of statuses" value={{status}}>
+                                {{status}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="RackType">Rack Type</label>
+                        <select id="RackType" formControlName="RackType">
+                            <option *ngFor="let type of types" value={{type}}>
+                                {{type}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">Cancel</button>
+                    <button type="submit" class="btn btn-primary blue" [disabled]="!editBikeRackForm.valid"><i
+                            class="fa fa-save"></i>
+                        <span>Save</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

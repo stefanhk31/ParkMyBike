@@ -9,12 +9,14 @@ import { BikeRacksComponent } from './bikeracks/bikeracks.component';
 import { BikeRacksService } from './services/bikeracks.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CreateBikerackModalComponent } from './bikeracks/create-bikerack-modal.component';
+import { EditBikerackModalComponent } from './bikeracks/edit-bikerack-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BikeRacksComponent,
-    CreateBikerackModalComponent
+    CreateBikerackModalComponent,
+    EditBikerackModalComponent
   ],
   imports: [
     BrowserModule,
