@@ -13,16 +13,17 @@
     </thead>
     <tbody>
         <tr *ngFor="let rack of bikeRacks">
-            <td>{{ rack.RackId }}</td>
-            <td>{{ rack.NumberOfRacks }}</td>
-            <td>{{ rack.LatLong }}</td>
-            <td>{{ rack.LocationDescription }}</td>
-            <td>{{ rack.RackType }}</td>
-            <td>{{ rack.RackStatus }}</td>
-            <td><button>Edit</button><button>Delete</button></td>
+            <td>{{ rack.rackId }}</td>
+            <td>{{ rack.numberOfRacks }}</td>
+            <td>{{ rack.latLong }}</td>
+            <td>{{ rack.locationDescription }}</td>
+            <td>{{ rack.rackType }}</td>
+            <td>{{ rack.status }}</td>
+            <td><button (click)="editBikeRackModal.show(rack.rackId)">Edit</button><button>Delete</button></td>
         </tr>
         <tr><button (click)="createBikeRackModal.show()">Add New Rack</button></tr>
     </tbody>
 </table>
 
 <create-bikerack-modal #createBikeRackModal (modalSave)="getBikeRacks()"></create-bikerack-modal>
+<edit-bikerack-modal #editBikeRackModal (modalSave)="getBikeRacks()"></edit-bikerack-modal>

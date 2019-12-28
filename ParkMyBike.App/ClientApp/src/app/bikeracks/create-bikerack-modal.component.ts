@@ -5,6 +5,7 @@ import { BikeRacksService } from '../services/bikeracks.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Statuses, RackTypes } from '../resources/enums';
 import { finalize } from 'rxjs/operators';
+import { ReactiveFormsHelpers } from '../resources/reactiveFormsHelpers';
 
 @Component({
   selector: 'create-bikerack-modal',
@@ -19,12 +20,12 @@ export class CreateBikerackModalComponent implements OnInit {
   types: string[] = Object.values(RackTypes).filter((x => isNaN(Number(x)))) as string[];
 
   bikeRack: BikeRack = {
-    RackId: 0,
-    NumberOfRacks: 0,
-    LatLong: "",
-    LocationDescription: "",
-    Status: "",
-    RackType: ""
+    rackId: 0,
+    numberOfRacks: 0,
+    latLong: "",
+    locationDescription: "",
+    status: "",
+    rackType: ""
   };
 
   active = false;
@@ -47,14 +48,6 @@ export class CreateBikerackModalComponent implements OnInit {
     });
   }
 
-  mapFormValueToBikeRackType(form: FormGroup): void {
-    this.bikeRack.NumberOfRacks = form.value["NumberOfRacks"];
-    this.bikeRack.LatLong = form.value["LatLong"];
-    this.bikeRack.LocationDescription = form.value["LocationDescription"];
-    this.bikeRack.Status = form.value["Status"];
-    this.bikeRack.RackType = form.value["RackType"];
-  }
-
   show(): void {
     this.active = true;
     this.modal.show();
@@ -62,7 +55,7 @@ export class CreateBikerackModalComponent implements OnInit {
 
   save(): void {
     this.saving = true;
-    this.mapFormValueToBikeRackType(this.newBikeRackForm);
+    ReactiveFormsHelpers.mapFormValueToBikeRackType(this.newBikeRackForm, this.bikeRack);
     this.bikeRacksService.addBikeRack(this.bikeRack)
     .pipe(finalize(() => { this.saving = false;}))
     .subscribe(() => {
