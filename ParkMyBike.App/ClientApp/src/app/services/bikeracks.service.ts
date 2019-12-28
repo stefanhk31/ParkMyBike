@@ -14,6 +14,7 @@ export class BikeRacksService {
   }
   
   public bikeRacks: BikeRack[] = [];
+  public bikeRack: BikeRack;
 
   loadBikeRacks(): Observable<boolean> {
     return this.http.get(this.apiUrl + "/api/bikeRacks")
@@ -28,6 +29,23 @@ export class BikeRacksService {
 
   addBikeRack(rack: BikeRack): Observable<boolean> {
     return this.http.post(this.apiUrl + "/api/bikeRacks/", rack)
+    .pipe(map(() => true));
+  }
+
+  getBikeRackForEdit(rackId: number): Observable<boolean> {
+    return this.http.get(this.apiUrl + `/api/bikeRacks/${rackId}`)
+    .pipe(
+      map(
+        (data: any) => {
+          this.bikeRack = data;
+          return true;
+        }
+      )
+    )
+  }
+
+  updateBikeRack(rack: BikeRack): Observable<boolean> {
+    return this.http.put(this.apiUrl + `/api/bikeRacks/${rack.rackId}`, rack)
     .pipe(map(() => true));
   }
 }
