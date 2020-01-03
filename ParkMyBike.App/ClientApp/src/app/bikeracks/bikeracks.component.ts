@@ -30,4 +30,12 @@ export class BikeRacksComponent implements OnInit {
       }
     });
   }
+
+  deleteBikeRack(rackId: number): void {
+    this.bikeRacksService.deleteBikeRack(rackId).subscribe(success => {
+      if (success) {
+        this.getBikeRacks();
+      }
+    })
+  }
 }

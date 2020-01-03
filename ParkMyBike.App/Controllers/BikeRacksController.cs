@@ -105,15 +105,15 @@ namespace ParkMyBike.Controllers
         }
 
         [HttpDelete]
-        [Route("api/[Controller]/delete/{id}")]
-        public ActionResult<BikeRack> Delete([FromBody]BikeRackViewModel rack)
+        [Route("api/[Controller]/{id}")]
+        public ActionResult<BikeRack> Delete(int id)
         {
             try
             {
-                var rackToDelete = _mapper.Map<BikeRackViewModel, BikeRack>(rack);
-                if (rackToDelete != null)
+                var rack = _repository.ViewSingleBikeRack(id);
+                if (rack != null)
                 {
-                    return Ok(_repository.DeleteBikeRack(rackToDelete));
+                    return Ok(_repository.DeleteBikeRack(rack));
                 }
                 else
                 {
@@ -122,7 +122,7 @@ namespace ParkMyBike.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError($"Failed to delete bike rack {rack}: {e.Message}");
+                _logger.LogError($"Failed to delete bike rack {id}: {e.Message}");
                 return BadRequest("Request to database failed. Check the logger for specifics.");
             }
         }
