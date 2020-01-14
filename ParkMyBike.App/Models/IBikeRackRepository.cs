@@ -1,4 +1,3 @@
-﻿using ParkMyBike.Resources.Enums;
 using System.Collections.Generic;
 
 namespace ParkMyBike.Models
@@ -7,12 +6,8 @@ namespace ParkMyBike.Models
     {
         IEnumerable<BikeRack> GetAllBikeRacks();
         BikeRack AddBikeRack(BikeRack rack);
-        BikeRack UpdateNumberofRacksOnBikeRack(int rackId, int newNumberOfRacks);
-        BikeRack UpdateBikeRackLocationDescription(int rackId, string newDescription);
-        BikeRack UpdateBikeRackStatus(int rackId, RackStatus newStatus);
-        BikeRack UpdateBikeRackType(int rackId, RackType newType);
+        BikeRack UpdateBikeRack(BikeRack rack);
         BikeRack ViewSingleBikeRack(int rackId);
         BikeRack DeleteBikeRack(BikeRack rack);
-
     }
 }

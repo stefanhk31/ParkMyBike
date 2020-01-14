@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using ParkMyBike.Models;
-using ParkMyBike.Resources.Enums;
 using ParkMyBike.ViewModels;
 
 namespace ParkMyBike.Controllers
@@ -27,9 +27,12 @@ namespace ParkMyBike.Controllers
         [Route("api/[Controller]")]
         public ActionResult<IEnumerable<BikeRack>> GetAll()
         {
+            var bikeRacks = _mapper.Map<IEnumerable<BikeRack>, IEnumerable<BikeRackViewModel>>(_repository.GetAllBikeRacks());
+            var bikeRacksJson = JsonConvert.SerializeObject(bikeRacks);
+
             try
             {
-                return Ok(_mapper.Map<IEnumerable<BikeRack>, IEnumerable<BikeRackViewModel>>(_repository.GetAllBikeRacks()));
+                return Ok(bikeRacksJson);
             }
             catch (Exception e)
             {
@@ -86,75 +89,31 @@ namespace ParkMyBike.Controllers
         }
 
         [HttpPut]
-        [Route("api/[Controller]/{id}/numberOfRacks={newNumberOfRacks}")]
-        public ActionResult<BikeRack> UpdateNumberOfRacks([FromForm]int id, [FromForm]int newNumberOfRacks)
+        [Route("api/[Controller]/{id}")]
+        public ActionResult<BikeRack> UpdateBikeRack([FromBody]BikeRackViewModel rack)
         {
             try
             {
-                return Ok(_repository.UpdateNumberofRacksOnBikeRack(id, newNumberOfRacks));
+                var rackToBeUpdated = _mapper.Map<BikeRackViewModel, BikeRack>(rack);
+                return Ok(_repository.UpdateBikeRack(rackToBeUpdated));
             }
             catch (Exception e)
             {
-                _logger.LogError($"Failed to update bike rack with id {id}: {e.Message}");
-                return BadRequest("Request to database failed. Check the logger for specifics.");
-            }
-        }
-
-        [HttpPut]
-        [Route("api/[Controller]/{id}/description={newDescription}")]
-        public ActionResult<BikeRack> UpdateLocationDescription([FromForm]int id, [FromForm]string newDescription)
-        {
-            try
-            {
-                return Ok(_repository.UpdateBikeRackLocationDescription(id, newDescription));
-            }
-            catch (Exception e)
-            {
-                _logger.LogError($"Failed to update bike rack with id {id}: {e.Message}");
-                return BadRequest("Request to database failed. Check the logger for specifics.");
-            }
-        }
-
-        [HttpPut]
-        [Route("api/[Controller]/{id}/status={newStatus}")]
-        public ActionResult<BikeRack> UpdateRackStatus([FromForm]int id, [FromForm]RackStatus newStatus)
-        {
-            try
-            {
-                return Ok(_repository.UpdateBikeRackStatus(id, newStatus));
-            }
-            catch (Exception e)
-            {
-                _logger.LogError($"Failed to update bike rack with id {id}: {e.Message}");
-                return BadRequest("Request to database failed. Check the logger for specifics.");
-            }
-        }
-
-        [HttpPut]
-        [Route("api/[Controller]/{id}/type={newType}")]
-        public ActionResult<BikeRack> UpdateRackType([FromForm]int id, [FromForm]RackType newType)
-        {
-            try
-            {
-                return Ok(_repository.UpdateBikeRackType(id, newType));
-            }
-            catch (Exception e)
-            {
-                _logger.LogError($"Failed to update bike rack with id {id}: {e.Message}");
+                _logger.LogError($"Failed to update bike rack with id {rack.RackId}: {e.Message}");
                 return BadRequest("Request to database failed. Check the logger for specifics.");
             }
         }
 
         [HttpDelete]
-        [Route("api/[Controller]/delete/{id}")]
-        public ActionResult<BikeRack> Delete([FromBody]BikeRackViewModel rack)
+        [Route("api/[Controller]/{id}")]
+        public ActionResult<BikeRack> Delete(int id)
         {
             try
             {
-                BikeRack rackToDelete = _mapper.Map<BikeRackViewModel, BikeRack>(rack);
-                if (rackToDelete != null)
+                var rack = _repository.ViewSingleBikeRack(id);
+                if (rack != null)
                 {
-                    return Ok(_repository.DeleteBikeRack(rackToDelete));
+                    return Ok(_repository.DeleteBikeRack(rack));
                 }
                 else
                 {
@@ -163,7 +122,7 @@ namespace ParkMyBike.Controllers
             }
             catch (Exception e)
             {
-                _logger.LogError($"Failed to delete bike rack {rack}: {e.Message}");
+                _logger.LogError($"Failed to delete bike rack {id}: {e.Message}");
                 return BadRequest("Request to database failed. Check the logger for specifics.");
             }
         }

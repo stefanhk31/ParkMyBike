@@ -1,0 +1,35 @@
+<h2>Bike Racks:</h2>
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Number of Racks</th>
+            <th>Latitude/Longitude</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let rack of bikeRacks">
+            <td>{{ rack.rackId }}</td>
+            <td>{{ rack.numberOfRacks }}</td>
+            <td>{{ rack.latLong }}</td>
+            <td>{{ rack.locationDescription }}</td>
+            <td>{{ rack.rackType }}</td>
+            <td>{{ rack.status }}</td>
+            <td>
+                <button (click)="editBikeRackModal.show(rack.rackId)">Edit</button>
+                <button [swal]="deleteSwal">Delete</button>
+                <swal #deleteSwal title="Delete {{rack.locationDescription}}?" text="This cannot be undone" icon="question"
+                    [showCancelButton]="true" [focusCancel]="true" (confirm)="deleteBikeRack(rack.rackId)">
+                </swal>
+            </td>
+        </tr>
+        <tr><button (click)="createBikeRackModal.show()">Add New Rack</button></tr>
+    </tbody>
+</table>
+
+<create-bikerack-modal #createBikeRackModal (modalSave)="getBikeRacks()"></create-bikerack-modal>
+<edit-bikerack-modal #editBikeRackModal (modalSave)="getBikeRacks()"></edit-bikerack-modal>
