@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { BikeRack } from '../interfaces/bikerack.interface';
 
 
@@ -27,7 +27,8 @@ export class BikeRacksService {
           this.bikeRacks = data;
           return true;
         }
-      ));
+      ), 
+      catchError(this.handleError<boolean>('loadBikeRacks')));
   }
 
   addBikeRack(rack: BikeRack): Observable<boolean> {
@@ -55,5 +56,12 @@ export class BikeRacksService {
   deleteBikeRack(rackId: number): Observable<boolean> {
     return this.http.delete(this.apiUrl + `/api/bikeRacks/${rackId}`, this.httpOptions)
     .pipe(map(() => true));
+  }
+
+  handleError<T> (operation: string) {
+    return (error: HttpErrorResponse): Observable<T> => {
+      const message = (error.error instanceof ErrorEvent) ? error.error.message : `server returned code ${error.status} with body "${error.error}"`;
+      throw new Error(`${operation} failed: ${message}`);
+    }
   }
 }
