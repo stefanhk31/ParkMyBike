@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ParkMyBike.Models.Entities;
 
 namespace ParkMyBike.Models
 {

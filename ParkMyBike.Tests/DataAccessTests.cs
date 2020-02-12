@@ -1,5 +1,5 @@
-using ParkMyBike.Resources.Enums;
 using System.Linq;
+using ParkMyBike.Models.Entities;
 using Xunit;
 
 namespace ParkMyBike.Tests
@@ -10,9 +10,9 @@ namespace ParkMyBike.Tests
         public void CanAddBikeRackToDatabase()
         {
             var rack = GenerateTestBikeRack(1);
-            _repository.AddBikeRack(rack);
+            Repository.AddBikeRack(rack);
 
-            var result = _context.BikeRacks.Count();
+            var result = Context.BikeRacks.Count();
             Assert.Equal(1, result);
         }
 
@@ -20,9 +20,9 @@ namespace ParkMyBike.Tests
         public void CanViewSingleBikeRackFromDatabase()
         {
             var rack = GenerateTestBikeRack(1);
-            _repository.AddBikeRack(rack);
+            Repository.AddBikeRack(rack);
 
-            var result = _repository.ViewSingleBikeRack(rack.Id);
+            var result = Repository.ViewSingleBikeRack(rack.Id);
             Assert.Equal(rack.Id, result.Id);
         }
 
@@ -34,22 +34,23 @@ namespace ParkMyBike.Tests
 
             foreach (var rack in racks)
             {
-                _repository.AddBikeRack(rack);
+                Repository.AddBikeRack(rack);
             }
 
-            var result = _repository.GetAllBikeRacks();
-            Assert.Equal(2, result.Count());
-            Assert.Equal(result.First().Id, racks[0].Id);
-            Assert.Equal(result.Last().Id, racks[1].Id);
+            var result = Repository.GetAllBikeRacks();
+            var bikeRacks = result as BikeRack[] ?? result.ToArray();
+            Assert.Equal(2, bikeRacks.Count());
+            Assert.Equal(bikeRacks.First().Id, racks[0].Id);
+            Assert.Equal(bikeRacks.Last().Id, racks[1].Id);
         }
 
         [Fact]
         public void CanUpdateBikeRack()
         {
             var rack = GenerateTestBikeRack(1);
-            var rackToBeUpdated = _repository.AddBikeRack(rack);
+            var rackToBeUpdated = Repository.AddBikeRack(rack);
             rackToBeUpdated.NumberOfRacks = 3;
-            var result = _repository.UpdateBikeRack(rackToBeUpdated);
+            var result = Repository.UpdateBikeRack(rackToBeUpdated);
             Assert.Equal(3, result.NumberOfRacks);
         }
     }

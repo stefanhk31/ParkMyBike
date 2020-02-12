@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using ParkMyBike.Models;
+using ParkMyBike.Models.Entities;
 using ParkMyBike.ViewModels;
 
 namespace ParkMyBike.Controllers
@@ -14,7 +15,7 @@ namespace ParkMyBike.Controllers
     {
         private readonly IBikeRackRepository _repository;
         private readonly ILogger<BikeRackRepository> _logger;
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
         public BikeRacksController(IBikeRackRepository repository, ILogger<BikeRackRepository> logger, IMapper mapper)
         {
