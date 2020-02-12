@@ -20,14 +20,14 @@
             <td>{{ rack.rackType }}</td>
             <td>{{ rack.status }}</td>
             <td>
-                <button (click)="editBikeRackModal.show(rack.rackId)">Edit</button>
-                <button [swal]="deleteSwal">Delete</button>
+                <button class="edit" (click)="editBikeRackModal.show(rack.rackId)">Edit</button>
+                <button class="delete" [swal]="deleteSwal">Delete</button>
                 <swal #deleteSwal title="Delete {{rack.locationDescription}}?" text="This cannot be undone" icon="question"
                     [showCancelButton]="true" [focusCancel]="true" (confirm)="deleteBikeRack(rack.rackId)">
                 </swal>
             </td>
         </tr>
-        <tr><button (click)="createBikeRackModal.show()">Add New Rack</button></tr>
+        <tr><button class="create" (click)="createBikeRackModal.show()">Add New Rack</button></tr>
     </tbody>
 </table>
 

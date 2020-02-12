@@ -19,7 +19,7 @@ export class BikeRacksService {
   public bikeRacks: BikeRack[] = [];
   public bikeRack: BikeRack;
 
-  loadBikeRacks(): Observable<boolean> {
+   loadBikeRacks(): Observable<boolean> {
     return this.http.get(this.apiUrl + "/api/bikeRacks")
     .pipe(
       map(

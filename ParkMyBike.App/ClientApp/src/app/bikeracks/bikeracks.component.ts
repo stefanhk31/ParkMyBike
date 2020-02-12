@@ -18,7 +18,6 @@ export class BikeRacksComponent implements OnInit {
 
   public bikeRacks: BikeRack[] = [];
 
-
   ngOnInit(): void {
     this.getBikeRacks();
   }
