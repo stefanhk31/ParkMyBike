@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.Logging;
+using ParkMyBike.Models.Entities;
 
 namespace ParkMyBike.Models
 {
     public class BikeRackRepository : IBikeRackRepository
     {
-        private BikeRackContext _bikeRacksDb;
+        private readonly BikeRackContext _bikeRacksDb;
         private readonly ILogger<BikeRackRepository> _logger;
 
         public BikeRackRepository(BikeRackContext bikeRacksDb, ILogger<BikeRackRepository> logger)
@@ -51,8 +52,7 @@ namespace ParkMyBike.Models
             try
             {
                 var result = _bikeRacksDb.BikeRacks
-                    .Where(br => br.Id == rackId)
-                    .FirstOrDefault();
+                    .FirstOrDefault(br => br.Id == rackId);
                 return result;
             }
             catch (Exception e)

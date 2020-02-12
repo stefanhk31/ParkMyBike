@@ -6,23 +6,24 @@ using ParkMyBike.Models;
 using ParkMyBike.Resources.Enums;
 using ParkMyBike.ViewModels;
 using System.Collections.Generic;
+using ParkMyBike.Models.Entities;
 using Xunit;
 
 namespace ParkMyBike.Tests
 {
-    public class WebAPITests : BaseTestClass
+    public class WebApiTests : BaseTestClass
     {
-        private BikeRacksController _controller;
+        private readonly BikeRacksController _controller;
 
-        public WebAPITests()
+        public WebApiTests()
         {
-            _controller = new BikeRacksController(_repository, _logger, _mapper);
+            _controller = new BikeRacksController(Repository, Logger, Mapper);
         }
 
         [Fact]
         public void GetAllReturnsSuccess()
         {
-            ActionResult<IEnumerable<BikeRack>> result = _controller.GetAll();
+            var result = _controller.GetAll();
             var contentResult = new OkObjectResult(result);
 
             Assert.NotNull(contentResult);
@@ -33,8 +34,8 @@ namespace ParkMyBike.Tests
         public void GetReturnsSuccess()
         {
             var rack = GenerateTestBikeRack(1);
-            _repository.AddBikeRack(rack);
-            ActionResult<BikeRack> result = _controller.Get(1);
+            Repository.AddBikeRack(rack);
+            var result = _controller.Get(1);
             var contentResult = new OkObjectResult(result);
 
             Assert.NotNull(contentResult);
@@ -45,8 +46,8 @@ namespace ParkMyBike.Tests
         public void PostReturnsSuccess()
         {
             var newRack = GenerateTestBikeRack(1);
-            _repository.AddBikeRack(newRack);
-            ActionResult<BikeRack> result = _controller.Post(_mapper.Map<BikeRack, BikeRackViewModel>(newRack));
+            Repository.AddBikeRack(newRack);
+            var result = _controller.Post(Mapper.Map<BikeRack, BikeRackViewModel>(newRack));
             var contentResult = new OkObjectResult(result);
 
             Assert.NotNull(contentResult);
@@ -57,9 +58,9 @@ namespace ParkMyBike.Tests
         public void UpdateBikeRackReturnsSuccess()
         {
             var rack = GenerateTestBikeRack(1);
-            _repository.AddBikeRack(rack);
+            Repository.AddBikeRack(rack);
             rack.NumberOfRacks = 3;
-            ActionResult<BikeRack> result = _controller.UpdateBikeRack(_mapper.Map<BikeRack, BikeRackViewModel>(rack));
+            var result = _controller.UpdateBikeRack(Mapper.Map<BikeRack, BikeRackViewModel>(rack));
             var contentResult = new OkObjectResult(result);
 
             Assert.NotNull(contentResult);
@@ -70,8 +71,8 @@ namespace ParkMyBike.Tests
         public void DeleteReturnsSuccess()
         {
             var rack = GenerateTestBikeRack(1);
-            _repository.AddBikeRack(rack);
-            ActionResult<BikeRack> result = _controller.Delete(rack.Id);
+            Repository.AddBikeRack(rack);
+            var result = _controller.Delete(rack.Id);
             var contentResult = new OkObjectResult(result);
 
             Assert.NotNull(contentResult);

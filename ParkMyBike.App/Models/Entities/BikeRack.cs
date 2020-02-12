@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using ParkMyBike.Resources.Enums;
 
-namespace ParkMyBike.Models
+namespace ParkMyBike.Models.Entities
 {
     public class BikeRack
     {

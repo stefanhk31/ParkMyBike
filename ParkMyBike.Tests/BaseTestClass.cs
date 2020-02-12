@@ -1,28 +1,29 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using Moq;
 using ParkMyBike.Resources.Enums;
 using ParkMyBike.Models;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
+using ParkMyBike.Models.Entities;
 
 namespace ParkMyBike.Tests
 {
     public class BaseTestClass : IDisposable
     {
-        protected BikeRackContextFactory _factory;
-        protected BikeRackContext _context;
-        protected ILogger<BikeRackRepository> _logger;
-        protected BikeRackRepository _repository;
-        protected IMapper _mapper;
+        protected BikeRackContextFactory Factory;
+        protected BikeRackContext Context;
+        protected ILogger<BikeRackRepository> Logger;
+        protected BikeRackRepository Repository;
+        protected IMapper Mapper;
 
         public BaseTestClass()
         {
-            _factory = new BikeRackContextFactory();
-            _context = _factory.CreateContext();
-            _logger = Mock.Of<ILogger<BikeRackRepository>>();
-            _repository = new BikeRackRepository(_context, _logger);
-            _mapper = Mock.Of<IMapper>();
+            Factory = new BikeRackContextFactory();
+            Context = Factory.CreateContext();
+            Logger = Mock.Of<ILogger<BikeRackRepository>>();
+            Repository = new BikeRackRepository(Context, Logger);
+            Mapper = Mock.Of<IMapper>();
         }
 
         public static BikeRack GenerateTestBikeRack(int rackId)
@@ -52,10 +53,10 @@ namespace ParkMyBike.Tests
 
         public void Dispose()
         {
-            _factory = null;
-            _context = null;
-            _logger = null;
-            _repository = null;
+            Factory = null;
+            Context = null;
+            Logger = null;
+            Repository = null;
         }
     }
 }
