@@ -20,7 +20,7 @@ namespace ParkMyBike.Tests
         public BaseTestClass()
         {
             Factory = new BikeRackContextFactory();
-            Context = Factory.CreateContext();
+            Context = Factory.CreateInMemoryContext();
             Logger = Mock.Of<ILogger<BikeRackRepository>>();
             Repository = new BikeRackRepository(Context, Logger);
             Mapper = Mock.Of<IMapper>();
@@ -34,7 +34,6 @@ namespace ParkMyBike.Tests
                 NumberOfRacks = 2,
                 LatLong = "0.0000,0.0000",
                 LocationDescription = "Test",
-                Status = RackStatus.Installed,
                 RackType = RackType.Hitch
             };
         }

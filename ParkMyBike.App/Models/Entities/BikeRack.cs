@@ -1,5 +1,4 @@
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using ParkMyBike.Resources.Enums;
 
 namespace ParkMyBike.Models.Entities
@@ -8,13 +7,13 @@ namespace ParkMyBike.Models.Entities
     {
         public int Id { get; set; }
         public int NumberOfRacks { get; set; }
+        [JsonProperty("position")]
+        public Position Position { get; set; }
         public string LatLong { get; set; }
         public string LocationDescription { get; set; }
-        [JsonProperty("Status")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public RackStatus Status { get; set; }
-        [JsonProperty("RackType")]
-        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonProperty("rackType")]
         public RackType RackType { get; set; }
+        public string ImagePath { get; set; }
     }
+
 }

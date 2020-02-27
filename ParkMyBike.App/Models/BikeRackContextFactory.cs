@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.Sqlite;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Data.Common;
@@ -15,7 +15,7 @@ namespace ParkMyBike.Models
                 .UseSqlite(_connection).Options;
         }
 
-        public BikeRackContext CreateContext()
+        public BikeRackContext CreateInMemoryContext()
         {
 
             if (_connection == null)

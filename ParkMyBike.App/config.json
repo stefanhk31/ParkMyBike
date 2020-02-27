@@ -1,6 +1,6 @@
 {
   "ConnectionStrings": {
-    "BikeRackConnectionString": "server=(localdb)\\MSSQLLocalDB;Database=ParkMyBikeDb;Integrated Security=true;MultipleActiveResultSets=true;"
+    "BikeRackConnectionString": "server=.\\SQLEXPRESS;Database=ParkMyBikeDb;Integrated Security=true;MultipleActiveResultSets=true;"
   },
 
   "Logging": {
