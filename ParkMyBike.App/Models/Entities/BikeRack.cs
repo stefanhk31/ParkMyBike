@@ -9,7 +9,6 @@ namespace ParkMyBike.Models.Entities
         public int NumberOfRacks { get; set; }
         [JsonProperty("position")]
         public Position Position { get; set; }
-        public string LatLong { get; set; }
         public string LocationDescription { get; set; }
         [JsonProperty("rackType")]
         public RackType RackType { get; set; }

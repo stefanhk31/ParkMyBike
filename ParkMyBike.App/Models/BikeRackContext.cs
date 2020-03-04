@@ -9,17 +9,19 @@ namespace ParkMyBike.Models
         {
         }
 
-        public BikeRackContext(DbContextOptions<BikeRackContext> options): base(options)
+        public BikeRackContext(DbContextOptions<BikeRackContext> options) : base(options)
         {
 
         }
 
         public virtual DbSet<BikeRack> BikeRacks { get; set; }
-                protected override void OnModelCreating(ModelBuilder modelBuilder)
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            //add custom mapping for location here? (mb also for racktype, if necessary?)
+            modelBuilder.Entity<BikeRack>()
+                .OwnsOne(e => e.Position);
         }
 
     }

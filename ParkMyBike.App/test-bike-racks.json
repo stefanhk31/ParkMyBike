@@ -7,7 +7,8 @@
       "longitude": -83.9569119
     },
     "locationDescription": "Home",
-    "rackType": "Other"
+    "rackType": "Other",
+    "imagePath":  "/Assets/Images/bike-rack-other.jpg"
   },
   {
     "id": 0,
@@ -17,7 +18,8 @@
       "longitude": -83.920165
     },
     "locationDescription": "Downtown",
-    "rackType": "Hitch"
+    "rackType": "Hitch",
+    "imagePath": "/Assets/Images/bike-rack-hitch.jpg"
   },
   {
     "id": 0,
@@ -27,7 +29,8 @@
       "longitude": -83.930794
     },
     "locationDescription": "Campus",
-    "rackType": "Hoop"
+    "rackType": "Hoop",
+    "imagePath": "/Assets/Images/bike-rack-hoop.jpg"
   },
   {
     "id": 0,
@@ -37,7 +40,8 @@
       "longitude": -83.866528
     },
     "locationDescription": "Ijams",
-    "rackType": "Ulockit"
+    "rackType": "Ulockit",
+    "imagePath": "/Assets/Images/bike-rack-ulockit.jpg"
   },
   {
     "id": 0,
@@ -47,6 +51,7 @@
       "longitude": -83.980927
     },
     "locationDescription": "Bearden",
-    "rackType": "Hitch"
+    "rackType": "Hitch",
+    "imagePath": "/Assets/Images/bike-rack-hitch.jpg"
   }
 ]

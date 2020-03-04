@@ -32,7 +32,6 @@ namespace ParkMyBike.Tests
             {
                 Id = rackId,
                 NumberOfRacks = 2,
-                LatLong = "0.0000,0.0000",
                 LocationDescription = "Test",
                 RackType = RackType.Hitch
             };
