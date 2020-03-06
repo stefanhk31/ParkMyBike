@@ -6,7 +6,7 @@ namespace ParkMyBike.Models.Entities
     public class BikeRack
     {
         public int Id { get; set; }
-        public int NumberOfRacks { get; set; }
+        public int? NumberOfRacks { get; set; }
         [JsonProperty("position")]
         public Position Position { get; set; }
         public string LocationDescription { get; set; }

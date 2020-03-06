@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ParkMyBike.Migrations
 {
@@ -12,7 +12,7 @@ namespace ParkMyBike.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NumberOfRacks = table.Column<int>(nullable: false),
+                    NumberOfRacks = table.Column<int>(nullable: true),
                     Position_Latitude = table.Column<double>(nullable: true),
                     Position_Longitude = table.Column<double>(nullable: true),
                     LocationDescription = table.Column<string>(nullable: true),

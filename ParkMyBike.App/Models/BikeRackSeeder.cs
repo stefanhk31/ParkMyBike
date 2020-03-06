@@ -11,9 +11,9 @@ namespace ParkMyBike.Models
     public class BikeRackSeeder
     {
         private readonly BikeRackContext _ctx;
-        private readonly IHostingEnvironment _hosting;
+        private readonly IWebHostEnvironment _hosting;
 
-        public BikeRackSeeder(BikeRackContext ctx, IHostingEnvironment hosting)
+        public BikeRackSeeder(BikeRackContext ctx, IWebHostEnvironment hosting)
         {
             _ctx = ctx;
             _hosting = hosting;
@@ -25,7 +25,7 @@ namespace ParkMyBike.Models
 
             if (!_ctx.BikeRacks.Any())
             {
-                var racksFilePath = Path.Combine(_hosting.ContentRootPath, "Data/test-bike-racks.json");
+                var racksFilePath = Path.Combine(_hosting.ContentRootPath, "test-bike-racks.json");
                 var racksJson = File.ReadAllText(racksFilePath);
                 var racks = JsonConvert.DeserializeObject<IEnumerable<BikeRack>>(racksJson);
 
